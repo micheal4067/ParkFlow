@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ParkFlow - Etags</title>
+
+    <link rel="icon" href="./images/title-icon.png" type="image/png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/etags.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <!-- Scripts -->
+    <script src="/js/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="header-title">
+                    <h1>Active E-Tags</h1>
+                    <p>Manage all e-tag activations and expirations</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search -->
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchTag" 
+                placeholder="Search by name or shop number"
+            >
+        </div>
+
+        <!-- E-Tag Table -->
+        <div class="table-wrapper">
+            <table id="etagTable">
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Shop No</th>
+                        <th>Tag ID</th>
+                        <th>Activation Date</th>
+                        <th>Expiry Date</th>
+                        <th>Status</th>
+                        <th>Days Left</th>
+                    </tr>
+                </thead>
+
+                <tbody id="etagBody"></tbody>
+
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/layout.js"></script>
+<script type="module" src="js/etags.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ParkFlow - Statistic</title>
+
+    <link rel="icon" href="./images/title-icon.png" type="image/png">
+
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/stats.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <script src="js/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="header-left">
+
+                <div class="header-title">
+                    <h1>Statistics</h1>
+                    <p>Car Park Sales Analytics</p>
+
+                    <!-- Month Picker injected by JS -->
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+             MONTHLY STATISTICS
+        ========================= -->
+
+        <section class="stats-section">
+
+            <h2 class="section-title">Monthly Statistics</h2>
+
+            <section class="kpi-grid">
+
+                <div class="kpi-card gradient1">
+                    <div class="kpi-icon">
+                        <i class="fa fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <span>Selected Month Revenue</span>
+                        <h2 id="monthRevenue">₦0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient2">
+                    <div class="kpi-icon">
+                        <i class="fa fa-ticket"></i>
+                    </div>
+                    <div>
+                        <span>Tickets Issued</span>
+                        <h2 id="monthTickets">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient3">
+                    <div class="kpi-icon">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <div>
+                        <span>E-Tags Sold</span>
+                        <h2 id="monthSoldTags">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient4">
+                    <div class="kpi-icon">
+                        <i class="fa fa-id-card"></i>
+                    </div>
+                    <div>
+                        <span>E-Tags Activated</span>
+                        <h2 id="monthActiveTags">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient5">
+                    <div class="kpi-icon">
+                        <i class="fa fa-clock"></i>
+                    </div>
+                    <div>
+                        <span>E-Tags Expired</span>
+                        <h2 id="monthExpiredTags">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- =========================
+             YEARLY STATISTICS
+        ========================= -->
+
+        <section class="stats-section">
+
+            <h2 class="section-title">Yearly Statistics</h2>
+
+            <section class="kpi-grid">
+
+                <div class="kpi-card gradient1">
+                    <div class="kpi-icon">
+                        <i class="fa fa-coins"></i>
+                    </div>
+                    <div>
+                        <span>Total Revenue (Year)</span>
+                        <h2 id="yearRevenue">₦0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient2">
+                    <div class="kpi-icon">
+                        <i class="fa fa-ticket"></i>
+                    </div>
+                    <div>
+                        <span>Total Tickets (Year)</span>
+                        <h2 id="yearTickets">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient3">
+                    <div class="kpi-icon">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <div>
+                        <span>Total E-Tags Sold</span>
+                        <h2 id="yearSoldTags">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient4">
+                    <div class="kpi-icon">
+                        <i class="fa fa-clock"></i>
+                    </div>
+                    <div>
+                        <span>Total Expired Tags</span>
+                        <h2 id="yearExpiredTags">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card gradient5">
+                    <div class="kpi-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div>
+                        <span>Current Staff</span>
+                        <h2 id="staffCount">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- =========================
+             CHARTS
+        ========================= -->
+
+        <section class="charts-grid">
+
+            <div class="chart-card">
+                <h3>Monthly Revenue Trend</h3>
+                <canvas id="monthlyRevenueChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Ticket Distribution (Year)</h3>
+                <canvas id="ticketDistributionChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>E-Tag Sales (Monthly)</h3>
+                <canvas id="etagUsageChart"></canvas>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/layout.js"></script>
+<script type="module" src="js/stats.js"></script>
+
+</body>
+
+</html>

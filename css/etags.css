@@ -1,0 +1,115 @@
+.main {
+    flex: 1;
+    padding: 40px;
+    margin-left: 240px;
+    min-width: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.header-title h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.header-title p {
+    color: #666;
+    font-size: 14px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-container input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+thead {
+    background: #111827;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+.status {
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+}
+
+.status.active {
+    background-color: #10b981;
+}
+
+.status.expiring {
+    background-color: #fbbf24;
+}
+
+.status.expired {
+    background-color: #ef4444;
+}
+
+.days-left {
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .main {
+        margin-left: 0;
+        padding: 25px;
+    }
+
+    table {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 500px) {
+    .main {
+        padding: 20px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 12px;
+    }
+}

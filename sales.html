@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ParkFlow - Sales</title>
+
+    <!-- Sidebar CSS -->
+    <link rel="icon" href="./images/title-icon.png" type="image/png">
+    <link rel="stylesheet" href="css/sidebar.css">
+
+    <!-- Sales Page CSS -->
+    <link rel="stylesheet" href="css/sales.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <!-- Font Awesome -->
+    <script src="js/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="header-left">
+
+                <div class="header-title">
+                    <h1>Sales Report</h1>
+                    <p>Car Park Revenue Monitoring</p>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- MONTH SELECTOR -->
+        <div class="month-selector">
+            <label>Select Month:</label>
+            <input type="month" id="monthPicker" min="2026-01" value="2026-01">
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <span>Total Parking Sales</span>
+                <h2 id="sumParkingCash">₦0</h2>
+            </div>
+
+            <div class="summary-card">
+                <span>Total E-Tag Sales</span>
+                <h2 id="sumETag">₦0</h2>
+            </div>
+
+            <div class="summary-card">
+                <span>Total Revenue</span>
+                <h2 id="sumRevenue">₦0</h2>
+            </div>
+
+            <div class="summary-card">
+                <span>Total Expenses</span>
+                <h2 id="sumExpenses">₦0</h2>
+            </div>
+
+        </section>
+
+        <!-- ACTION BUTTONS -->
+        <div class="report-actions">
+
+            <button class="export">
+                <i class="fa fa-file-excel"></i> Export Excel
+            </button>
+
+        </div>
+
+        <!-- SALES TABLE -->
+        <div class="table-wrapper">
+
+            <table id="salesTable">
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Parking Cash</th>
+                        <th>E-Tag Cash</th>
+                        <th>Parking Bank</th>
+                        <th>E-Tag Bank</th>
+                        <th>Total Sales</th>
+                        <th>Expenses</th>
+                        <th>Deposit</th>
+                        <th>Account</th>
+                        <th>Cash Balance</th>
+                    </tr>
+                </thead>
+
+                <tbody id="salesBody"></tbody>
+
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="2">TOTAL</td>
+                        <td id="tParkingCash"></td>
+                        <td id="tETagCash"></td>
+                        <td id="tParkingBank"></td>
+                        <td id="tETagBank"></td>
+                        <td id="tSales"></td>
+                        <td id="tExpenses"></td>
+                        <td id="tDeposit"></td>
+                        <td id="tAccount"></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- MOBILE MENU JS -->
+<script src="js/layout.js"></script>
+
+<!-- SALES JS -->
+<script type="module" src="js/sales.js"></script>
+
+</body>
+
+</html>

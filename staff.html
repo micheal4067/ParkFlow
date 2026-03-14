@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ParkFlow - Staff Management</title>
+
+<!-- Sidebar CSS -->
+ <link rel="icon" href="./images/title-icon.png" type="image/png">
+<link rel="stylesheet" href="css/sidebar.css">
+<!-- Staff page CSS -->
+<link rel="stylesheet" href="css/staff.css">
+<link rel="stylesheet" href="css/all.min.css"/>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <div class="header-title">
+                    <h1>Staff Management</h1>
+                    <p>List of all current staff members</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- STAFF CARDS -->
+        <section class="staff-grid" id="staffList">
+            <!-- JS will inject staff cards here -->
+        </section>
+
+    </main>
+</div>
+
+<!-- STAFF DETAIL MODAL -->
+<div class="staff-modal" id="staffModal">
+    <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <div class="modal-body" id="modalBody">
+            <!-- Staff details populated by JS -->
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="js/layout.js"></script>
+<script type="module" src="js/staff.js"></script>
+
+</body>
+</html>
