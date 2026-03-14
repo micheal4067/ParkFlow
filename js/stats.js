@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        CURRENT DATE
     ========================= */
-
     const today = new Date();
     const currentYear = today.getFullYear();
     const currentMonth = String(today.getMonth() + 1).padStart(2,"0");
@@ -16,20 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        MONTH PICKER
     ========================= */
-
     const header = document.querySelector(".header-title");
 
     const monthPicker = document.createElement("input");
     monthPicker.type = "month";
     monthPicker.value = `${currentYear}-${currentMonth}`;
     monthPicker.id = "monthPicker";
-
     header.appendChild(monthPicker);
 
     /* =========================
        KPI ELEMENTS
     ========================= */
-
     const monthRevenueEl = document.getElementById("monthRevenue");
     const monthTicketsEl = document.getElementById("monthTickets");
     const monthSoldTagsEl = document.getElementById("monthSoldTags");
@@ -46,37 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        CHART CONTEXT
     ========================= */
+    const revenueCtx = document.getElementById("monthlyRevenueChart").getContext("2d");
+    const ticketCtx = document.getElementById("ticketDistributionChart").getContext("2d");
+    const etagCtx = document.getElementById("etagUsageChart").getContext("2d");
 
-    const revenueCtx = document
-        .getElementById("monthlyRevenueChart")
-        .getContext("2d");
-
-    const ticketCtx = document
-        .getElementById("ticketDistributionChart")
-        .getContext("2d");
-
-    const etagCtx = document
-        .getElementById("etagUsageChart")
-        .getContext("2d");
-
-    const months = [
-        "Jan","Feb","Mar","Apr","May","Jun",
-        "Jul","Aug","Sep","Oct","Nov","Dec"
-    ];
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
     /* =========================
        ANNUAL DATA ARRAYS
     ========================= */
-
     const annualRevenue = [];
     const annualTickets = [];
     const annualETagRevenue = [];
 
-    let totalYearRevenue = 0;
-    let totalYearTickets = 0;
-
     months.forEach((m, i) => {
-
         const monthKey = `${currentYear}-${String(i+1).padStart(2,"0")}`;
         const monthData = SalesData[monthKey] || {};
 
@@ -85,36 +64,27 @@ document.addEventListener("DOMContentLoaded", () => {
         let etagRevenue = 0;
 
         Object.values(monthData).forEach(day => {
-
-            revenue +=
-                (day.parkingCash || 0) +
-                (day.parkingBank || 0) +
-                (day.etagCash || 0) +
-                (day.etagBank || 0);
-
+            revenue += (day.parkingCash || 0) + (day.parkingBank || 0) + (day.etagCash || 0) + (day.etagBank || 0);
             tickets += day.tickets || 0;
-
-            etagRevenue +=
-                (day.etagCash || 0) +
-                (day.etagBank || 0);
-
+            etagRevenue += (day.etagCash || 0) + (day.etagBank || 0);
         });
 
         annualRevenue.push(revenue);
         annualTickets.push(tickets);
         annualETagRevenue.push(etagRevenue);
-
-        totalYearRevenue += revenue;
-        totalYearTickets += tickets;
-
     });
 
     /* =========================
-       YEAR TAG STATISTICS
+       YEARLY TOTALS
     ========================= */
+    const totalYearRevenue = annualRevenue.reduce((sum, val) => sum + val, 0);
+    const totalYearTickets = annualTickets.reduce((sum, val) => sum + val, 0);
+    const totalYearETagRevenue = annualETagRevenue.reduce((sum, val) => sum + val, 0);
 
-    const yearSoldTags = etags.length;
+    // Total sold tags for the year (1 tag = 7,500)
+    const yearSoldTags = Math.floor(totalYearETagRevenue / 7500);
 
+    // Expired tags calculation remains unchanged
     const yearExpiredTags = etags.filter(tag =>
         new Date(tag.expires).getFullYear() === currentYear &&
         new Date(tag.expires) < today
@@ -123,51 +93,32 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        UPDATE YEAR KPIs
     ========================= */
-
-    yearRevenueEl.textContent =
-        "₦" + totalYearRevenue.toLocaleString();
-
-    yearTicketsEl.textContent =
-        totalYearTickets.toLocaleString();
-
-    yearSoldTagsEl.textContent =
-        yearSoldTags;
-
-    yearExpiredTagsEl.textContent =
-        yearExpiredTags;
-
-    staffCountEl.textContent =
-        staffData.length;
+    yearRevenueEl.textContent = "₦" + totalYearRevenue.toLocaleString();
+    yearTicketsEl.textContent = totalYearTickets.toLocaleString();
+    yearSoldTagsEl.textContent = yearSoldTags;
+    yearExpiredTagsEl.textContent = yearExpiredTags;
+    staffCountEl.textContent = staffData.length;
 
     /* =========================
        MONTH DATA FUNCTION
     ========================= */
-
     function loadMonthStats(monthStr){
-
         const monthData = SalesData[monthStr] || {};
 
         let revenue = 0;
         let tickets = 0;
+        let etagRevenue = 0;
 
         Object.values(monthData).forEach(day => {
-
-            revenue +=
-                (day.parkingCash || 0) +
-                (day.parkingBank || 0) +
-                (day.etagCash || 0) +
-                (day.etagBank || 0);
-
+            revenue += (day.parkingCash || 0) + (day.parkingBank || 0) + (day.etagCash || 0) + (day.etagBank || 0);
             tickets += day.tickets || 0;
-
+            etagRevenue += (day.etagCash || 0) + (day.etagBank || 0);
         });
 
-        /* ---- TAG DATA ---- */
+        // Sold tags based on revenue
+        const monthSoldTags = Math.floor(etagRevenue / 7500);
 
-        const monthSoldTags = etags.filter(tag =>
-            tag.activated.startsWith(monthStr)
-        ).length;
-
+        // Active and expired tags remain as before
         const monthActiveTags = etags.filter(tag =>
             tag.activated.startsWith(monthStr)
         ).length;
@@ -176,62 +127,43 @@ document.addEventListener("DOMContentLoaded", () => {
             tag.expires.startsWith(monthStr)
         ).length;
 
-        /* ---- UPDATE MONTH KPIs ---- */
-
-        monthRevenueEl.textContent =
-            "₦" + revenue.toLocaleString();
-
-        monthTicketsEl.textContent =
-            tickets.toLocaleString();
-
-        monthSoldTagsEl.textContent =
-            monthSoldTags;
-
-        monthActiveTagsEl.textContent =
-            monthActiveTags;
-
-        monthExpiredTagsEl.textContent =
-            monthExpiredTags;
-
+        // Update month KPIs
+        monthRevenueEl.textContent = "₦" + revenue.toLocaleString();
+        monthTicketsEl.textContent = tickets.toLocaleString();
+        monthSoldTagsEl.textContent = monthSoldTags;
+        monthActiveTagsEl.textContent = monthActiveTags;
+        monthExpiredTagsEl.textContent = monthExpiredTags;
     }
 
     /* =========================
        CHARTS
     ========================= */
-
+    // Monthly Revenue Chart
     new Chart(revenueCtx, {
-
-        type:"bar",
-
-        data:{
-            labels:months,
-
-            datasets:[{
-                label:"Revenue",
-                data:annualRevenue,
-                backgroundColor:"#6366f1"
+        type: "bar",
+        data: {
+            labels: months,
+            datasets: [{
+                label: "Revenue",
+                data: annualRevenue,
+                backgroundColor: "#6366f1"
             }]
         },
-
-        options:{
-            responsive:true,
-            plugins:{legend:{display:false}},
-            scales:{y:{beginAtZero:true}}
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
         }
-
     });
 
+    // Ticket Distribution Chart
     new Chart(ticketCtx, {
-
-        type:"doughnut",
-
-        data:{
-            labels:months,
-
-            datasets:[{
-                data:annualTickets,
-
-                backgroundColor:[
+        type: "doughnut",
+        data: {
+            labels: months,
+            datasets: [{
+                data: annualTickets,
+                backgroundColor: [
                     "#3b82f6","#6366f1","#8b5cf6",
                     "#10b981","#22c55e","#14b8a6",
                     "#f59e0b","#f97316","#ef4444",
@@ -239,47 +171,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             }]
         },
-
-        options:{
-            responsive:true,
-            plugins:{legend:{position:"bottom"}}
+        options: {
+            responsive: true,
+            plugins: { legend: { position: "bottom" } }
         }
-
     });
 
+    // E-Tag Sold Chart
+    const annualETagSold = annualETagRevenue.map(rev => Math.floor(rev / 7500));
+
     new Chart(etagCtx, {
-
-        type:"bar",
-
-        data:{
-            labels:months,
-
-            datasets:[{
-                label:"E-Tag Revenue",
-                data:annualETagRevenue,
-                backgroundColor:"#f59e0b"
+        type: "bar",
+        data: {
+            labels: months,
+            datasets: [{
+                label: "E-Tag Sold",
+                data: annualETagSold,
+                backgroundColor: "#f59e0b"
             }]
         },
-
-        options:{
-            responsive:true,
-            plugins:{legend:{display:false}},
-            scales:{y:{beginAtZero:true}}
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
         }
-
     });
 
     /* =========================
        INITIAL LOAD
     ========================= */
-
     loadMonthStats(`${currentYear}-${currentMonth}`);
 
     /* =========================
-       MONTH CHANGE
+       MONTH CHANGE EVENT
     ========================= */
-
-    monthPicker.addEventListener("change", e=>{
+    monthPicker.addEventListener("change", e => {
         loadMonthStats(e.target.value);
     });
 
