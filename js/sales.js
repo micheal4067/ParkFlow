@@ -112,10 +112,17 @@ function calculateTotals(
     document.getElementById("tAccount").innerText = formatNumber(account);
 
     // summary cards
-    document.getElementById("sumParkingCash").innerText = "₦" + formatNumber(parkingCash);
-    document.getElementById("sumETag").innerText = "₦" + formatNumber(etagCash);
-    document.getElementById("sumRevenue").innerText = "₦" + formatNumber(sales);
-    document.getElementById("sumExpenses").innerText = "₦" + formatNumber(expenses);
+document.getElementById("sumParkingCash").innerText =
+    "₦" + formatNumber(parkingCash + parkingBank);
+
+document.getElementById("sumETag").innerText =
+    "₦" + formatNumber(etagCash + etagBank);
+
+document.getElementById("sumRevenue").innerText =
+    "₦" + formatNumber(sales);
+
+document.getElementById("sumExpenses").innerText =
+    "₦" + formatNumber(expenses);
 }
 
 
