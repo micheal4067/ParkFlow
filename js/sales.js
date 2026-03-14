@@ -27,8 +27,13 @@ function loadMonth() {
     let totalETagCash = 0;
     let totalParkingBank = 0;
     let totalETagBank = 0;
+    let totalSales = 0;
+    let totalExpenses = 0;
+    let totalDeposit = 0;
+    let totalAccount = 0;
 
     for (let i = 1; i <= days; i++) {
+
         const d = monthData[i] || {
             desc: "Sales",
             parkingCash: 0,
@@ -45,82 +50,98 @@ function loadMonth() {
         const total = rowParking + rowETag;
         const balance = 0; // placeholder
 
+        // accumulate totals
         totalParkingCash += d.parkingCash || 0;
-        totalParkingBank += d.parkingBank || 0;
         totalETagCash += d.etagCash || 0;
+        totalParkingBank += d.parkingBank || 0;
         totalETagBank += d.etagBank || 0;
+        totalSales += total;
+        totalExpenses += d.expenses || 0;
+        totalDeposit += d.deposit || 0;
+        totalAccount += d.account || 0;
 
         tbody.innerHTML += `
 <tr>
-    <td>${String(i).padStart(2, "0")}</td>
-    <td>${d.desc}</td>
-    <td>${formatNumber(d.parkingCash)}</td>
-    <td>${formatNumber(d.etagCash)}</td>
-    <td>${formatNumber(d.parkingBank)}</td>
-    <td>${formatNumber(d.etagBank)}</td>
-    <td class="salesTotal">${formatNumber(total)}</td>
-    <td>${formatNumber(d.expenses)}</td>
-    <td>${formatNumber(d.deposit)}</td>
-    <td>${formatNumber(d.account)}</td>
-    <td class="balance">${formatNumber(balance)}</td>
+<td>${String(i).padStart(2, "0")}</td>
+<td>${d.desc}</td>
+<td>${formatNumber(d.parkingCash)}</td>
+<td>${formatNumber(d.etagCash)}</td>
+<td>${formatNumber(d.parkingBank)}</td>
+<td>${formatNumber(d.etagBank)}</td>
+<td class="salesTotal">${formatNumber(total)}</td>
+<td>${formatNumber(d.expenses)}</td>
+<td>${formatNumber(d.deposit)}</td>
+<td>${formatNumber(d.account)}</td>
+<td class="balance">${formatNumber(balance)}</td>
 </tr>`;
     }
 
-    calculateTotals(totalParkingCash, totalParkingBank, totalETagCash, totalETagBank);
+    calculateTotals(
+        totalParkingCash,
+        totalETagCash,
+        totalParkingBank,
+        totalETagBank,
+        totalSales,
+        totalExpenses,
+        totalDeposit,
+        totalAccount
+    );
 }
 
-// Calculate totals for the month
-function calculateTotals(parkingCash, parkingBank, etagCash, etagBank) {
-    let sales = parkingCash + parkingBank + etagCash + etagBank;
-    let expenses = 0, deposit = 0, account = 0;
 
-    document.querySelectorAll("#salesBody tr").forEach(row => {
-        const cells = row.querySelectorAll("td");
-        expenses += Number(cells[7].innerText.replace(/,/g, ""));
-        deposit += Number(cells[8].innerText.replace(/,/g, ""));
-        account += Number(cells[9].innerText.replace(/,/g, ""));
-    });
+// Calculate totals
+function calculateTotals(
+    parkingCash,
+    etagCash,
+    parkingBank,
+    etagBank,
+    sales,
+    expenses,
+    deposit,
+    account
+) {
 
-    // Update totals in table
-    document.getElementById("tParkingCash").innerText = formatNumber(parkingCash + parkingBank);
-    document.getElementById("tETagCash").innerText = formatNumber(etagCash + etagBank);
+    document.getElementById("tParkingCash").innerText = formatNumber(parkingCash);
+    document.getElementById("tETagCash").innerText = formatNumber(etagCash);
+    document.getElementById("tParkingBank").innerText = formatNumber(parkingBank);
+    document.getElementById("tETagBank").innerText = formatNumber(etagBank);
+
     document.getElementById("tSales").innerText = formatNumber(sales);
     document.getElementById("tExpenses").innerText = formatNumber(expenses);
     document.getElementById("tDeposit").innerText = formatNumber(deposit);
     document.getElementById("tAccount").innerText = formatNumber(account);
 
-    // Update summary cards
-    document.getElementById("sumParkingCash").innerText = "₦" + formatNumber(parkingCash + parkingBank);
-    document.getElementById("sumETag").innerText = "₦" + formatNumber(etagCash + etagBank);
+    // summary cards
+    document.getElementById("sumParkingCash").innerText = "₦" + formatNumber(parkingCash);
+    document.getElementById("sumETag").innerText = "₦" + formatNumber(etagCash);
     document.getElementById("sumRevenue").innerText = "₦" + formatNumber(sales);
     document.getElementById("sumExpenses").innerText = "₦" + formatNumber(expenses);
 }
 
+
 // Export table to Excel
 function exportTable() {
+
     const table = document.getElementById("salesTable").outerHTML;
 
-    // Get selected month from the month picker
-    const selected = monthPicker.value; // format: YYYY-MM
+    const selected = monthPicker.value;
     const date = new Date(selected + "-01");
 
     const month = date.toLocaleString("default", { month: "long" });
     const year = date.getFullYear();
 
-    // Title
     const title = `<h2 style="text-align:center;">
-        New Kuje Shopping Complex Sales Report (Car Park - ${month} ${year})
-    </h2>`;
+New Kuje Shopping Complex Sales Report (Car Park - ${month} ${year})
+</h2>`;
 
     const html = `
-        <html>
-        <head><meta charset="UTF-8"></head>
-        <body>
-            ${title}
-            ${table}
-        </body>
-        </html>
-    `;
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+${title}
+${table}
+</body>
+</html>`;
 
     const dataUrl = 'data:application/vnd.ms-excel,' + encodeURIComponent(html);
 
@@ -130,17 +151,22 @@ function exportTable() {
     link.click();
 }
 
-document.querySelector('.export').addEventListener('click', ()=>{
-    exportTable();
-})
 
-// Set monthPicker to current month/year on page load
+// export button
+document.querySelector('.export').addEventListener('click', () => {
+    exportTable();
+});
+
+
+// set current month
 const today = new Date();
-const monthStr = today.toISOString().slice(0, 7); // "YYYY-MM"
+const monthStr = today.toISOString().slice(0, 7);
 monthPicker.value = monthStr;
 
-// Load current month
+
+// load data
 loadMonth();
 
-// Event listener for month change
+
+// change month
 monthPicker.addEventListener("change", loadMonth);
