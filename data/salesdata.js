@@ -754,6 +754,126 @@ etagBank:0,
 expenses:0,
 deposit:39200,
 account:39200
+},
+
+14:{
+desc:"Sales",
+tickets:97,
+parkingCash:9700,
+etagCash:0,
+parkingBank:0,
+etagBank:7500,
+expenses:0,
+deposit:18500,
+account:18500
+},
+
+15:{
+desc:"OFF",
+tickets:0,
+parkingCash:0,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:0,
+account:0
+},
+
+16:{
+desc:"Sales",
+tickets:116,
+parkingCash:9600,
+etagCash:0,
+parkingBank:0,
+etagBank:7500,
+expenses:0,
+deposit:0,
+account:0
+},
+
+17:{
+desc:"Sales",
+tickets:100,
+parkingCash:11000,
+etagCash:7500,
+parkingBank:0,
+etagBank:15000,
+expenses:0,
+deposit:0,
+account:0
+},
+
+18:{
+desc:"Sales",
+tickets:130,
+parkingCash:13000,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:0,
+account:0
+},
+
+19:{
+desc:"Sales",
+tickets:163,
+parkingCash:12700,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:33600,
+account:33600
+},
+
+20:{
+desc:"Sales",
+tickets:70,
+parkingCash:4700,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:0,
+account:0
+},
+
+21:{
+desc:"Sales",
+tickets:97,
+parkingCash:7400,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:0,
+account:0
+},
+
+22:{
+desc:"OFF",
+tickets:0,
+parkingCash:0,
+etagCash:0,
+parkingBank:0,
+etagBank:0,
+expenses:0,
+deposit:0,
+account:0
+},
+
+23:{
+desc:"Sales",
+tickets:0,
+parkingCash:0,
+etagCash:0,
+parkingBank:0,
+etagBank:15000,
+expenses:0,
+deposit:24800,
+account:24800
 }
 
 }
@@ -813,7 +933,15 @@ export const etags = [
    { name: "Joda Francis", shopNo: "B1-13&44", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mobility", shopNo: "J0-20", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" }
+   { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+
+   { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "Not Issued", activated: "2026-03-14", expires: "2027-03-14" },
+   { name: "Chika Jegede", shopNo: "P/I-06", tagId: "Not Issued", activated: "2026-03-16", expires: "2027-03-16" },
+   { name: "Binga Kyepari", shopNo: "E0-53", tagId: "Not Issued", activated: "2026-03-17", expires: "2027-03-17" },
+   { name: "Salimat Usman", shopNo: "E1-22", tagId: "Not Issued", activated: "2026-03-17", expires: "2027-03-17" },
+   { name: "Abdul Hassan B", shopNo: "B1-18", tagId: "Not Issued", activated: "2026-03-17", expires: "2027-03-17" },
+   { name: "Musa Dorathy", shopNo: "E1-31", tagId: "Not Issued", activated: "2026-03-23", expires: "2027-03-23" },
+   { name: "Samuel Jeremiah", shopNo: "E1-34", tagId: "Not Issued", activated: "2026-03-23", expires: "2027-03-23" }
   
 ];
 

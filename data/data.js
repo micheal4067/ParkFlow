@@ -35,6 +35,15 @@
           startDate: "2026-02-04",
           contact: "08055667788",
           email: "Not Available"
+        },
+         {
+          name: "Adam Renshammah Hardy",
+          profile: "images/no-profile-picture.jpg",
+          position: "Park Attendant",
+          post: "Exit 1 & 2",
+          startDate: "2026-03-16",
+          contact: "07068894327",
+          email: "hardyadam41@gmail.com"
         }
        
       ];
