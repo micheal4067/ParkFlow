@@ -88,26 +88,31 @@ body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    overflow-x: auto;
+    overflow-x: auto;       
+    overflow-y: auto;       
+    max-height: 500px;      
+}
+
+
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 20;             
+    background: #111827;     
+    color: white;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1100px;
+    min-width: 800px;
 }
 
-thead {
-    background: #111827;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
+
 
 th,
 td {
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     border-bottom: 1px solid #eee;
 }
@@ -166,4 +171,5 @@ tfoot td {
         padding: 8px;
         font-size: 12px;
     }
+
 }

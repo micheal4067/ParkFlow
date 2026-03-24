@@ -154,8 +154,8 @@ etagCash:0,
 parkingBank:0,
 etagBank:0,
 expenses:0,
-deposit:50000,
-account:50000
+deposit:0,
+account:0
 },
 
 17:{
@@ -866,7 +866,7 @@ account:0
 
 23:{
 desc:"Sales",
-tickets:0,
+tickets:111,
 parkingCash:0,
 etagCash:0,
 parkingBank:0,
@@ -928,7 +928,7 @@ export const etags = [
   { name: "Hauwa Jorim Shazabul", shopNo: "EO-65", tagId: "317433", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Ahmad Adamu", shopNo: "EO-41/44", tagId: "317434", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Azeez Okayinka", shopNo: "D1-6T", tagId: "317435", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Favor Bosco", shopNo: "B0-62", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Favor Bosco", shopNo: "B0-62", tagId: "317442", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mrs Gladdy Hammord", shopNo: "G-02", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Joda Francis", shopNo: "B1-13&44", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mobility", shopNo: "J0-20", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
