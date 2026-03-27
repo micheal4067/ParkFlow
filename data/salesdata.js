@@ -903,7 +903,7 @@ account:0
 26:{
 desc:"Sales",
 tickets:76,
-parkingCash:0,
+parkingCash:8100,
 etagCash:0,
 parkingBank:0,
 etagBank:15000,
