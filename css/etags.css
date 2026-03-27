@@ -35,6 +35,32 @@
     box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
 }
 
+.filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #e5e7eb;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #c7d2fe;
+}
+
+.filter-btn.active {
+    background: #6366f1;
+    color: white;
+}
+
 .table-wrapper {
     background: white;
     border-radius: 12px;

@@ -30,17 +30,13 @@
 
 <!-- HEADER -->
 <header class="header">
-
 <div class="header-left">
-
 <div class="header-title">
 <h1>Statistics</h1>
 <p>Car Park Sales Analytics</p>
 <!-- Month Picker injected by JS -->
 </div>
-
 </div>
-
 </header>
 
 <!-- =========================
@@ -54,19 +50,15 @@
 <section class="kpi-grid">
 
 <div class="kpi-card gradient1">
-<div class="kpi-icon">
-<i class="fa fa-chart-line"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-chart-line"></i></div>
 <div>
-<span>Selected Month Revenue</span>
+<span>Total Revenue</span>
 <h2 id="monthRevenue">₦0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient2">
-<div class="kpi-icon">
-<i class="fa fa-ticket"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-ticket"></i></div>
 <div>
 <span>Tickets Issued</span>
 <h2 id="monthTickets">0</h2>
@@ -74,32 +66,60 @@
 </div>
 
 <div class="kpi-card gradient3">
-<div class="kpi-icon">
-<i class="fa fa-tags"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-tags"></i></div>
 <div>
-<span>E-Tags Subscrition</span>
+<span>E-Tag Subscribers</span>
 <h2 id="monthSoldTags">0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient4">
-<div class="kpi-icon">
-<i class="fa fa-id-card"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-id-card"></i></div>
 <div>
-<span>E-Tags Activated</span>
+<span>E-Tag Activated</span>
 <h2 id="monthActiveTags">0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient5">
-<div class="kpi-icon">
-<i class="fa fa-clock"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-clock"></i></div>
 <div>
-<span>E-Tags Expired</span>
+<span>E-Tag Expired</span>
 <h2 id="monthExpiredTags">0</h2>
+</div>
+</div>
+
+<!-- NEW KPIs -->
+
+<div class="kpi-card gradient6">
+<div class="kpi-icon"><i class="fa fa-plus-circle"></i></div>
+<div>
+<span>Additional Tags</span>
+<h2 id="monthExtraTags">0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient1">
+<div class="kpi-icon"><i class="fa fa-car"></i></div>
+<div>
+<span>Parking Revenue</span>
+<h2 id="monthParkingRevenue">₦0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient3">
+<div class="kpi-icon"><i class="fa fa-tags"></i></div>
+<div>
+<span>E-Tag Revenue</span>
+<h2 id="monthETagRevenue">₦0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient5">
+<div class="kpi-icon"><i class="fa fa-money-bill-wave"></i></div>
+<div>
+<span>Expenses</span>
+<h2 id="monthExpenses">₦0</h2>
 </div>
 </div>
 
@@ -118,59 +138,79 @@
 <section class="kpi-grid">
 
 <div class="kpi-card gradient1">
-<div class="kpi-icon">
-<i class="fa fa-coins"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-coins"></i></div>
 <div>
-<span>Total Revenue (Year)</span>
+<span>Total Revenue</span>
 <h2 id="yearRevenue">₦0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient2">
-<div class="kpi-icon">
-<i class="fa fa-ticket"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-ticket"></i></div>
 <div>
-<span>Total Tickets (Year)</span>
+<span>Total Tickets</span>
 <h2 id="yearTickets">0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient3">
-<div class="kpi-icon">
-<i class="fa fa-tags"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-tags"></i></div>
 <div>
-<span>Total E-Tags Subscribtion</span>
+<span>E-Tag Subscribers</span>
 <h2 id="yearSoldTags">0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient4">
-<div class="kpi-icon">
-<i class="fa fa-id-card"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-id-card"></i></div>
 <div>
-<span>Total E-Tags Activated</span>
+<span>E-Tag Activated</span>
 <h2 id="yearActiveTags">0</h2>
 </div>
 </div>
 
 <div class="kpi-card gradient4">
-<div class="kpi-icon">
-<i class="fa fa-clock"></i>
-</div>
+<div class="kpi-icon"><i class="fa fa-clock"></i></div>
 <div>
-<span>Total Expired Tags</span>
+<span>Expired Tags</span>
 <h2 id="yearExpiredTags">0</h2>
 </div>
 </div>
 
-<div class="kpi-card gradient5">
-<div class="kpi-icon">
-<i class="fa fa-users"></i>
+<div class="kpi-card gradient6">
+<div class="kpi-icon"><i class="fa fa-plus-circle"></i></div>
+<div>
+<span>Additional Tags</span>
+<h2 id="yearExtraTags">0</h2>
 </div>
+</div>
+
+<div class="kpi-card gradient1">
+<div class="kpi-icon"><i class="fa fa-car"></i></div>
+<div>
+<span>Parking Revenue</span>
+<h2 id="yearParkingRevenue">₦0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient3">
+<div class="kpi-icon"><i class="fa fa-tags"></i></div>
+<div>
+<span>E-Tag Revenue</span>
+<h2 id="yearETagRevenue">₦0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient5">
+<div class="kpi-icon"><i class="fa fa-money-bill-wave"></i></div>
+<div>
+<span>Expenses</span>
+<h2 id="yearExpenses">₦0</h2>
+</div>
+</div>
+
+<div class="kpi-card gradient5">
+<div class="kpi-icon"><i class="fa fa-users"></i></div>
 <div>
 <span>Current Staff</span>
 <h2 id="staffCount">0</h2>
@@ -212,5 +252,4 @@
 <script type="module" src="js/stats.js"></script>
 
 </body>
-
 </html>

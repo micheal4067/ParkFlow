@@ -48,21 +48,31 @@
                 placeholder="Search by name or shop number"
             >
         </div>
+        <div class="filter-container">
+
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="expired">Expired</button>
+            <button class="filter-btn" data-filter="not-issued">Not Issued</button>
+            <button class="filter-btn" data-filter="extra">Extra Tags</button>
+
+        </div>
 
         <!-- E-Tag Table -->
         <div class="table-wrapper">
             <table id="etagTable">
 
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Shop No</th>
-                        <th>Tag ID</th>
-                        <th>Activation Date</th>
-                        <th>Expiry Date</th>
-                        <th>Status</th>
-                        <th>Days Left</th>
-                    </tr>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Shop No</th>
+                    <th>Tag ID</th>
+                    <th>Activated</th>
+                    <th>Expires</th>
+                    <th>Status</th>
+                    <th>Days Left</th>
+                </tr>
                 </thead>
 
                 <tbody id="etagBody"></tbody>
