@@ -208,9 +208,10 @@ function generateMonthlySummary(selected) {
     const date = new Date(selected + "-01");
     const month = date.toLocaleString("default", { month: "long" });
     const year = date.getFullYear();
+    const naira = "₦";
 
     return {
-        text: `The Car Park Unit generated a total revenue of ₦${formatNumber(total)} for ${month} ${year}, consisting of ₦${formatNumber(parking)} from regular ticket sales and ₦${formatNumber(etag)} from E-Tag subscriptions.`,
+        text: `The Car Park Unit generated a total revenue of ${naira}${formatNumber(total)} for ${month} ${year}, consisting of ${naira}${formatNumber(parking)} from regular ticket sales and ${naira}${formatNumber(etag)} from E-Tag subscriptions.`,
         month,
         year
     };
@@ -273,6 +274,219 @@ ${footer}
     link.download = `Sales-Report-${summary.month}-${summary.year}.xls`;
     link.click();
 }
+
+
+function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF("p", "mm", "a4");
+
+    const selected = monthPicker.value;
+    const summary = generateMonthlySummary(selected);
+    const data = SalesData[selected] || {};
+
+    const date = new Date(selected + "-01");
+    const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    let runningBalance = getPreviousMonthBalance(selected);
+
+    // =========================
+    // HEADER
+    // =========================
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.text("NEW KUJE SHOPPING COMPLEX SALES REPORT", 105, 15, { align: "center" });
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text(`(Car Park - ${summary.month} ${summary.year})`, 105, 22, { align: "center" });
+
+    // =========================
+    // ACCOUNT BOX
+    // =========================
+    doc.setDrawColor(0);
+    doc.rect(14, 28, 182, 18);
+
+    doc.setFillColor(0, 0, 0);
+    doc.rect(14, 28, 182, 6, "F");
+
+    doc.setTextColor(255);
+    doc.setFontSize(10);
+    doc.text("ACCOUNT", 105, 32, { align: "center" });
+
+    doc.setTextColor(0);
+    doc.setFontSize(9);
+    doc.text("MONIEPOINT 5058523746   Okiky Hotel and Suites Ltd (car park proceed)", 16, 40);
+
+    // =========================
+    // TABLE DATA
+    // =========================
+    const body = [];
+    let totalParkingCash = 0, totalETagCash = 0, totalParkingBank = 0, totalETagBank = 0;
+    let totalSales = 0, totalExpenses = 0, totalDeposit = 0, totalAccount = 0;
+
+    // Balance B/F
+    body.push(["--","Balance B/F","","","","","","","","",formatNumber(runningBalance)]);
+
+    for (let i = 1; i <= days; i++) {
+        const d = data[i] || {};
+        const rowParkingCash = d.parkingCash || 0;
+        const rowETagCash = d.etagCash || 0;
+        const rowParkingBank = d.parkingBank || 0;
+        const rowETagBank = d.etagBank || 0;
+        const rowExpenses = d.expenses || 0;
+        const rowDeposit = d.deposit || 0;
+        const rowAccount = d.account || 0;
+
+        const total = rowParkingCash + rowETagCash + rowParkingBank + rowETagBank;
+        const dailyCash = rowParkingCash + rowETagCash;
+
+        runningBalance = runningBalance + dailyCash - rowExpenses - rowDeposit;
+
+        body.push([
+            String(i).padStart(2,"0"),
+            d.desc || "Sales",
+            formatNumber(rowParkingCash),
+            formatNumber(rowETagCash),
+            formatNumber(rowParkingBank),
+            formatNumber(rowETagBank),
+            formatNumber(total),
+            formatNumber(rowExpenses),
+            formatNumber(rowDeposit),
+            formatNumber(rowAccount),
+            formatNumber(runningBalance)
+        ]);
+
+        totalParkingCash += rowParkingCash;
+        totalETagCash += rowETagCash;
+        totalParkingBank += rowParkingBank;
+        totalETagBank += rowETagBank;
+        totalSales += total;
+        totalExpenses += rowExpenses;
+        totalDeposit += rowDeposit;
+        totalAccount += rowAccount;
+    }
+
+    // TOTAL row
+    body.push([
+        "", "TOTAL",
+        formatNumber(totalParkingCash),
+        formatNumber(totalETagCash),
+        formatNumber(totalParkingBank),
+        formatNumber(totalETagBank),
+        formatNumber(totalSales),
+        formatNumber(totalExpenses),
+        formatNumber(totalDeposit),
+        formatNumber(totalAccount),
+        formatNumber(runningBalance)
+    ]);
+
+    // =========================
+    // TABLE
+    // =========================
+    doc.autoTable({
+        startY: 50,
+        head: [[
+            "Date","Description","Parking Cash","E-Tag Cash","Parking Bank","E-Tag Bank",
+            "Total Sales","Expenses","Deposit","Account","Cash Balance"
+        ]],
+        body: body,
+        styles: { fontSize: 7, halign: "right" },
+        headStyles: { fillColor: [0,0,0], textColor: 255, halign: "center" },
+        columnStyles: { 1: { halign: "left" } },
+        didParseCell: function(dataCell) {
+            const row = dataCell.row.raw;
+            // OFF days
+            if(row[1] === "OFF") {
+                dataCell.cell.styles.fillColor = [0,0,0];
+                dataCell.cell.styles.textColor = 255;
+            }
+            // TOTAL row bold
+            if(dataCell.row.index === body.length - 1) {
+                dataCell.cell.styles.fontStyle = 'bold';
+            }
+        }
+    });
+
+    // =========================
+    // SUMMARY
+    // =========================
+    let finalY = doc.lastAutoTable.finalY + 8;
+    if(finalY > 260) { doc.addPage(); finalY = 20; }
+
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const titleText = "MONTHLY SALES SUMMARY";
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    const titleWidth = doc.getTextWidth(titleText);
+    doc.text(titleText, (pageWidth - titleWidth)/2, finalY);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8);
+
+    // Bold figures in summary
+    const summaryParts = [
+        "The Car Park Unit generated a total revenue of ",
+        { text: `${formatNumber(totalSales)}`, bold: true },
+        ` for ${summary.month} ${summary.year}, consisting of `,
+        { text: `${formatNumber(totalParkingCash + totalParkingBank)}`, bold: true },
+        " from regular ticket sales and ",
+        { text: `${formatNumber(totalETagCash + totalETagBank)}`, bold: true },
+        " from E-Tag subscriptions."
+    ];
+
+    let currentY = finalY + 6;
+    const lineHeight = 6;
+    const maxWidth = 180;
+
+    summaryParts.forEach(part => {
+        if(typeof part === "string") {
+            doc.setFont("helvetica","normal");
+            const lines = doc.splitTextToSize(part,maxWidth);
+            doc.text(lines,14,currentY);
+            currentY += lines.length * lineHeight;
+        } else if(part.bold) {
+            doc.setFont("helvetica","bold");
+            const lines = doc.splitTextToSize(part.text,maxWidth);
+            doc.text(lines,14,currentY);
+            currentY += lines.length * lineHeight;
+        }
+    });
+
+    // =========================
+    // FOOTER
+    // =========================
+    let footerY = currentY + 10;
+    if(footerY > 280) { doc.addPage(); footerY = 20; }
+
+    const now = new Date();
+    const formattedDate = now.toLocaleString();
+
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(8);
+    doc.text("Report Generated with:", 14, footerY);
+
+    doc.setFont("helvetica","bold");
+    doc.text(`ParkFlow System (${formattedDate})`, 14, footerY + 5);
+
+    // clickable link
+    doc.setFont("helvetica","normal");
+    doc.setTextColor(0,0,255);
+    doc.textWithLink(
+        "kujeshoppingcomplexparkflow.netlify.app",
+        14, footerY + 10,
+        { url: "https://kujeshoppingcomplexparkflow.netlify.app" }
+    );
+    doc.setTextColor(0,0,0);
+
+    // =========================
+    // SAVE PDF
+    // =========================
+    doc.save(`Sales-Report-${summary.month}-${summary.year}.pdf`);
+}
+
+// Utility function for formatting Naira with commas
+
+
+document.querySelector('.pdf').addEventListener('click', downloadPDF);
 
 /* =========================
    INIT

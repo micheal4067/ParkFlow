@@ -17,7 +17,14 @@
     <link rel="stylesheet" href="css/all.min.css">
 
     <!-- Font Awesome -->
-    <script src="js/chart.umd.min.js"></script>
+    <!-- jsPDF FIRST -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- THEN autoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+<!-- THEN your script -->
+<script type="module" src="js/sales.js"></script>
 
 </head>
 
@@ -79,12 +86,14 @@
         <!-- ACTION BUTTONS -->
         <div class="report-actions">
 
-            <button class="export">
+            <!-- <button class="export">
                 <i class="fa fa-file-excel"></i> Export Excel
+            </button>-->
+            <button class="pdf">
+             <i class="fa fa-file-pdf"></i> Download PDF
             </button>
 
         </div>
-        <div id="pdfContent" style="display:none;"></div>
 
         <!-- SALES TABLE -->
         <div class="table-wrapper">
@@ -99,8 +108,6 @@
                         <th>E-Tag Cash</th>
                         <th>Parking Bank</th>
                         <th>E-Tag Bank</th>
-                       <!-- <th>Additional E-Tag     Bank</th>
-                        <th>Additional E-Tag Cash</th>-->
                         <th>Total Sales</th>
                         <th>Expenses</th>
                         <th>Deposit</th>
