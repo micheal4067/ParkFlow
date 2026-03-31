@@ -287,6 +287,7 @@ function downloadPDF() {
     const date = new Date(selected + "-01");
     const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     let runningBalance = getPreviousMonthBalance(selected);
+    const balanceBF = runningBalance;
 
     // =========================
     // HEADER
@@ -302,7 +303,6 @@ function downloadPDF() {
     // =========================
     // ACCOUNT BOX
     // =========================
-    doc.setDrawColor(0);
     doc.rect(14, 28, 182, 18);
 
     doc.setFillColor(0, 0, 0);
@@ -320,6 +320,7 @@ function downloadPDF() {
     // TABLE DATA
     // =========================
     const body = [];
+
     let totalParkingCash = 0, totalETagCash = 0, totalParkingBank = 0, totalETagBank = 0;
     let totalSales = 0, totalExpenses = 0, totalDeposit = 0, totalAccount = 0;
 
@@ -328,6 +329,7 @@ function downloadPDF() {
 
     for (let i = 1; i <= days; i++) {
         const d = data[i] || {};
+
         const rowParkingCash = d.parkingCash || 0;
         const rowETagCash = d.etagCash || 0;
         const rowParkingBank = d.parkingBank || 0;
@@ -394,12 +396,12 @@ function downloadPDF() {
         columnStyles: { 1: { halign: "left" } },
         didParseCell: function(dataCell) {
             const row = dataCell.row.raw;
-            // OFF days
+
             if(row[1] === "OFF") {
                 dataCell.cell.styles.fillColor = [0,0,0];
                 dataCell.cell.styles.textColor = 255;
             }
-            // TOTAL row bold
+
             if(dataCell.row.index === body.length - 1) {
                 dataCell.cell.styles.fontStyle = 'bold';
             }
@@ -407,78 +409,96 @@ function downloadPDF() {
     });
 
     // =========================
-    // SUMMARY
+    // FORCE PAGE 2 FOR SUMMARY
     // =========================
-    let finalY = doc.lastAutoTable.finalY + 8;
-    if(finalY > 260) { doc.addPage(); finalY = 20; }
+    doc.addPage();
+    let y = 20;
 
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const titleText = "MONTHLY SALES SUMMARY";
-    doc.setFont("helvetica", "bold");
+    // =========================
+    // SUMMARY BOX
+    // =========================
+    const totalCashGenerated = totalParkingCash + totalETagCash;
+    const totalParkingTotal = totalParkingCash + totalParkingBank;
+    const totalETagTotal = totalETagCash + totalETagBank;
+    const endingBalance = runningBalance;
+
+    // Box
+    doc.rect(14, y, 182, 68);
+
+    // Header
+    doc.setFillColor(0,0,0);
+    doc.rect(14, y, 182, 7, "F");
+
+    doc.setTextColor(255);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(10);
+    doc.text("MONTHLY SALES SUMMARY", 105, y + 5, { align: "center" });
+
+    doc.setTextColor(0);
     doc.setFontSize(9);
-    const titleWidth = doc.getTextWidth(titleText);
-    doc.text(titleText, (pageWidth - titleWidth)/2, finalY);
 
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(8);
+    let lineY = y + 12;
 
-    // Bold figures in summary
-    const summaryParts = [
-        "The Car Park Unit generated a total revenue of ",
-        { text: `${formatNumber(totalSales)}`, bold: true },
-        ` for ${summary.month} ${summary.year}, consisting of `,
-        { text: `${formatNumber(totalParkingCash + totalParkingBank)}`, bold: true },
-        " from regular ticket sales and ",
-        { text: `${formatNumber(totalETagCash + totalETagBank)}`, bold: true },
-        " from E-Tag subscriptions."
-    ];
+    doc.setFont("helvetica","normal");
+    doc.text(`For ${summary.month} ${summary.year}, the Car Park Unit generated:`, 16, lineY);
 
-    let currentY = finalY + 6;
-    const lineHeight = 6;
-    const maxWidth = 180;
+    lineY += 6;
 
-    summaryParts.forEach(part => {
-        if(typeof part === "string") {
-            doc.setFont("helvetica","normal");
-            const lines = doc.splitTextToSize(part,maxWidth);
-            doc.text(lines,14,currentY);
-            currentY += lines.length * lineHeight;
-        } else if(part.bold) {
-            doc.setFont("helvetica","bold");
-            const lines = doc.splitTextToSize(part.text,maxWidth);
-            doc.text(lines,14,currentY);
-            currentY += lines.length * lineHeight;
-        }
-    });
+    const addLine = (label, value, bold = false) => {
+        doc.setFont("helvetica", bold ? "bold" : "normal");
+        doc.text(label, 18, lineY);
+        doc.text(`₦${formatNumber(value)}`, 130, lineY);
+        lineY += 6;
+    };
+
+    addLine("• Total Revenue:", totalSales, true);
+    addLine("• Parking Sales:", totalParkingTotal);
+    addLine("• E-Tag Sales:", totalETagTotal);
+
+    lineY += 2;
+    doc.line(16, lineY, 190, lineY);
+    lineY += 7;
+
+    // Balance B/F
+    addLine("• Balance B/F (Brought Forward):", balanceBF);
+
+    // Cash Generated
+    addLine("• Total Cash Generated:", totalCashGenerated, true);
+    addLine("• Total Deposit Made:", totalDeposit);
+
+    // Ending Balance
+    doc.setFont("helvetica","bold");
+    doc.text("• Ending Balance:", 18, lineY);
+
+    doc.setTextColor(endingBalance < 0 ? 255 : 0, endingBalance < 0 ? 0 : 128, 0);
+    doc.text(`₦${formatNumber(endingBalance)}`, 130, lineY);
+    doc.setTextColor(0);
 
     // =========================
     // FOOTER
     // =========================
-    let footerY = currentY + 10;
-    if(footerY > 280) { doc.addPage(); footerY = 20; }
+    let footerY = lineY + 12;
 
-    const now = new Date();
-    const formattedDate = now.toLocaleString();
+    const now = new Date().toLocaleString();
 
     doc.setFont("helvetica","normal");
     doc.setFontSize(8);
     doc.text("Report Generated with:", 14, footerY);
 
     doc.setFont("helvetica","bold");
-    doc.text(`ParkFlow System (${formattedDate})`, 14, footerY + 5);
+    doc.text(`ParkFlow System (${now})`, 14, footerY + 5);
 
-    // clickable link
-    doc.setFont("helvetica","normal");
     doc.setTextColor(0,0,255);
     doc.textWithLink(
         "kujeshoppingcomplexparkflow.netlify.app",
         14, footerY + 10,
         { url: "https://kujeshoppingcomplexparkflow.netlify.app" }
     );
-    doc.setTextColor(0,0,0);
+
+    doc.setTextColor(0);
 
     // =========================
-    // SAVE PDF
+    // SAVE
     // =========================
     doc.save(`Sales-Report-${summary.month}-${summary.year}.pdf`);
 }
@@ -494,4 +514,4 @@ document.querySelector('.pdf').addEventListener('click', downloadPDF);
 monthPicker.value = new Date().toISOString().slice(0, 7);
 loadMonth();
 monthPicker.addEventListener("change", loadMonth);
-document.querySelector('.export').addEventListener('click', exportTable);
+//document.querySelector('.export').addEventListener('click', exportTable);

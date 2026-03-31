@@ -909,7 +909,7 @@ parkingBank:0,
 etagBank:15000,
 expenses:0,
 deposit:24100,
-account:0
+account:24100
 },
 
 27:{
@@ -918,7 +918,7 @@ tickets:103,
 parkingCash:9500,
 etagCash:0,
 parkingBank:0,
-etagBank:0,
+etagBank:7500,
 expenses:0,
 deposit:0,
 account:0
@@ -950,7 +950,7 @@ account:0
 
 30:{
 desc:"Sales",
-tickets:0,
+tickets:117,
 parkingCash:0,
 etagCash:0,
 parkingBank:0,
@@ -991,7 +991,7 @@ export const etags = [
   { name: "Rosemary Osundu", shopNo: "P/D-15", tagId: "317408", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Fatimah Adenike", shopNo: "P/E-21/22/23", tagId: "317418", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Olaniyi Blessing", shopNo: "E0-39", tagId: "317405", activated: "2026-03-01", expires: "2027-03-01" },
-  { name: "Ezeaba Ukochi", shopNo: "B1-47", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+  { name: "Ezeaba Ugochi", shopNo: "B1-47", tagId: "317452", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Mrs Enechi Sandra", shopNo: "C0-08", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Facetech Gadgets", shopNo: "D1-15", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Lawal Oriyomi", shopNo: "P/E-24", tagId: "317407", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1045,7 +1045,9 @@ export const etags = [
   { name: "Favor Chidera Anya", shopNo: "D1-08", tagId: "317497", activated: "2026-03-25", expires: "2027-03-25" },
   { name: "Osabuohien Desmond", shopNo: "D0-28", tagId: "317441", activated: "2026-03-24", expires: "2027-03-24" },
   { name: "Erutor Onone Rosemary", shopNo: "D0-51", tagId: "317447", activated: "2026-03-27", expires: "2027-03-27" },
-  { name: "Sylvester Olorunfemi", shopNo: "B1-06", tagId: "317458", activated: "2026-03-27", expires: "2027-03-27" }
+  { name: "Sylvester Olorunfemi", shopNo: "B1-06", tagId: "317458", activated: "2026-03-27", expires: "2027-03-27" },
+
+  { name: "K'S Fabric & Collections", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" }
 ];
 
 export function getMonthlyStats(yearMonth){
