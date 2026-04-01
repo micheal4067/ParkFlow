@@ -445,7 +445,7 @@ function downloadPDF() {
     doc.save(`Sales-Report-${summary.month}-${summary.year}.pdf`);
 }
 
-function downloadWord() {
+async function downloadWordDocx() {
     const selected = monthPicker.value;
     const summary = generateMonthlySummary(selected);
     const data = SalesData[selected] || {};
@@ -456,29 +456,36 @@ function downloadWord() {
     let runningBalance = getPreviousMonthBalance(selected);
     const balanceBF = runningBalance;
 
-    let rows = "";
-
     let totalParkingCash = 0, totalETagCash = 0, totalParkingBank = 0, totalETagBank = 0;
     let totalSales = 0, totalExpenses = 0, totalDeposit = 0, totalAccount = 0;
 
-    // =========================
-    // BALANCE B/F
-    // =========================
-    rows += `
-    <tr style="font-weight:bold; background:#f2f2f2;">
-        <td>--</td>
-        <td>Balance B/F</td>
-        <td colspan="8"></td>
-        <td>${formatNumber(balanceBF)}</td>
-    </tr>
-    `;
+    const tableRows = [];
+    const headers = ["Date","Description","Parking Cash","E-Tag Cash","Parking Bank","E-Tag Bank","Total Sales","Expenses","Deposit","Account","Cash Balance"];
+    const headerWidths = [1500, 3000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000];
 
-    // =========================
-    // DAILY ROWS
-    // =========================
-    for (let i = 1; i <= days; i++) {
+    // Table Header
+    tableRows.push(new docx.TableRow({
+        children: headers.map((text,i) => new docx.TableCell({
+            children: [new docx.Paragraph({ text, bold: true, alignment: docx.AlignmentType.CENTER })],
+            shading: { type: docx.ShadingType.CLEAR, fill: "000000" },
+            width: { size: headerWidths[i], type: docx.WidthType.DXA },
+            margins: { top:150, bottom:150, left:120, right:120 }
+        }))
+    }));
+
+    // Balance B/F
+    tableRows.push(new docx.TableRow({
+        children: [
+            new docx.TableCell({ children: [new docx.Paragraph("--")] , width: { size:1500, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children: [new docx.Paragraph({ text: "Balance B/F", bold:true })], width: { size:3000, type: docx.WidthType.DXA } }),
+            ...Array(8).fill(new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:2000, type: docx.WidthType.DXA } })),
+            new docx.TableCell({ children: [new docx.Paragraph(formatNumber(balanceBF))], width: { size:2000, type: docx.WidthType.DXA } })
+        ]
+    }));
+
+    // Daily rows
+    for(let i=1;i<=days;i++){
         const d = data[i] || {};
-
         const parkingCash = d.parkingCash || 0;
         const etagCash = d.etagCash || 0;
         const parkingBank = d.parkingBank || 0;
@@ -489,28 +496,40 @@ function downloadWord() {
 
         const total = parkingCash + etagCash + parkingBank + etagBank;
         const dailyCash = parkingCash + etagCash;
+        runningBalance += dailyCash - expenses - deposit;
 
-        runningBalance = runningBalance + dailyCash - expenses - deposit;
+        const isOff = (d.desc||"").toUpperCase() === "OFF";
+        const rowColor = isOff ? "000000" : undefined;
+        const textColor = isOff ? "FFFFFF" : (runningBalance<0 ? "FF0000":"0A7D00");
 
-        const isOff = (d.desc || "").toUpperCase() === "OFF";
+        const rowCells = [
+            String(i).padStart(2,"0"),
+            d.desc || "Sales",
+            formatNumber(parkingCash),
+            formatNumber(etagCash),
+            formatNumber(parkingBank),
+            formatNumber(etagBank),
+            formatNumber(total), // TOTAL SALES
+            formatNumber(expenses),
+            formatNumber(deposit),
+            formatNumber(account),
+            formatNumber(runningBalance)
+        ];
 
-        rows += `
-        <tr style="${isOff ? 'background:black; color:white; font-weight:bold;' : ''}">
-            <td>${String(i).padStart(2, "0")}</td>
-            <td>${d.desc || "Sales"}</td>
-            <td>${formatNumber(parkingCash)}</td>
-            <td>${formatNumber(etagCash)}</td>
-            <td>${formatNumber(parkingBank)}</td>
-            <td>${formatNumber(etagBank)}</td>
-            <td>${formatNumber(total)}</td>
-            <td>${formatNumber(expenses)}</td>
-            <td>${formatNumber(deposit)}</td>
-            <td>${formatNumber(account)}</td>
-            <td style="color:${isOff ? 'white' : (runningBalance < 0 ? 'red' : '#0a7d00')}">
-                ${formatNumber(runningBalance)}
-            </td>
-        </tr>
-        `;
+        tableRows.push(new docx.TableRow({
+            children: rowCells.map((text,j)=> new docx.TableCell({
+                children:[new docx.Paragraph({ 
+                    text, 
+                    color: textColor, 
+                    bold: j === 6 // make the Total Sales column bold
+                })],
+                width: { size: headerWidths[j], type: docx.WidthType.DXA },
+                shading: rowColor ? { type: docx.ShadingType.CLEAR, fill: rowColor } : undefined,
+                margins:{top:150,bottom:150,left:120,right:120}
+            })),
+            cantSplit:true,
+            height: { value: 400, rule:"atLeast" }
+        }));
 
         totalParkingCash += parkingCash;
         totalETagCash += etagCash;
@@ -522,229 +541,97 @@ function downloadWord() {
         totalAccount += account;
     }
 
-    // =========================
-    // TOTAL ROW
-    // =========================
-    rows += `
-    <tr style="font-weight:bold; background:#eaeaea;">
-        <td></td>
-        <td>TOTAL</td>
-        <td>${formatNumber(totalParkingCash)}</td>
-        <td>${formatNumber(totalETagCash)}</td>
-        <td>${formatNumber(totalParkingBank)}</td>
-        <td>${formatNumber(totalETagBank)}</td>
-        <td>${formatNumber(totalSales)}</td>
-        <td>${formatNumber(totalExpenses)}</td>
-        <td>${formatNumber(totalDeposit)}</td>
-        <td>${formatNumber(totalAccount)}</td>
-        <td>${formatNumber(runningBalance)}</td>
-    </tr>
-    `;
+    // TOTAL row
+    tableRows.push(new docx.TableRow({
+        children: [
+            new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:1500, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph({ text:"TOTAL", bold:true })], width: { size:3000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingCash))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagCash))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingBank))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagBank))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalSales), { bold:true })], width: { size:2000, type: docx.WidthType.DXA } }, // TOTAL SALES bold
+            ),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalExpenses))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalDeposit))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalAccount))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(runningBalance))], width: { size:2000, type: docx.WidthType.DXA } }),
+        ],
+        shading:{ type: docx.ShadingType.CLEAR, fill:"EAEAEA" },
+        cantSplit:true,
+        height:{value:400,rule:"atLeast"}
+    }));
 
-    // =========================
-    // SUMMARY VALUES
-    // =========================
+    const table = new docx.Table({ rows: tableRows, width:{ size:100, type:docx.WidthType.PERCENTAGE } });
+
+    const endingBalance = runningBalance;
     const totalCashGenerated = totalParkingCash + totalETagCash;
     const totalParkingTotal = totalParkingCash + totalParkingBank;
     const totalETagTotal = totalETagCash + totalETagBank;
-    const endingBalance = runningBalance;
 
-    // =========================
-    // CLEAN SUMMARY CARD
-    // =========================
-    const summaryBox = `
-    <div style="width:85%; margin:40px auto; font-size:12px;">
+    // Summary box (unchanged, professional style)
+    const summaryBoxRows = [
+        ["Total Revenue", totalSales],
+        ["Parking Sales", totalParkingTotal],
+        ["E-Tag Sales", totalETagTotal],
+        ["Balance B/F", balanceBF],
+        ["Cash Generated", totalCashGenerated],
+        ["Deposits", totalDeposit],
+        ["Ending Balance", endingBalance]
+    ].map(([label,value]) => new docx.TableRow({
+        children:[
+            new docx.TableCell({
+                children:[new docx.Paragraph({ text: label, bold:true })],
+                shading:{ type: docx.ShadingType.CLEAR, fill:"F3F3F3" },
+                margins:{ top:150,bottom:150,left:200,right:200 }
+            }),
+            new docx.TableCell({
+                children:[new docx.Paragraph({ text:`₦${formatNumber(value)}`, bold:true, color:value<0?"FF0000":"0A7D00" })],
+                shading:{ type: docx.ShadingType.CLEAR, fill:"F3F3F3" },
+                margins:{ top:150,bottom:150,left:200,right:200 }
+            })
+        ]
+    }));
 
-        <div style="text-align:center; font-weight:bold; font-size:14px; margin-bottom:10px;">
-            Monthly Sales Summary
-        </div>
-
-        <div style="text-align:center; margin-bottom:15px;">
-            ${summary.month} ${summary.year}
-        </div>
-
-        <div style="
-            border:1px solid #ddd;
-            border-radius:6px;
-            padding:18px;
-            background:#fafafa;
-        ">
-
-            <div style="display:flex; justify-content:space-between;">
-                <span><b>Total Revenue</b></span>
-                <span><b>₦${formatNumber(totalSales)}</b></span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-top:6px;">
-                <span>Parking Sales</span>
-                <span>₦${formatNumber(totalParkingTotal)}</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-top:4px;">
-                <span>E-Tag Sales</span>
-                <span>₦${formatNumber(totalETagTotal)}</span>
-            </div>
-
-            <div style="border-top:1px solid #ddd; margin:12px 0;"></div>
-
-            <div style="display:flex; justify-content:space-between;">
-                <span>Balance B/F</span>
-                <span>₦${formatNumber(balanceBF)}</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-top:6px;">
-                <span><b>Cash Generated</b></span>
-                <span><b>₦${formatNumber(totalCashGenerated)}</b></span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-top:6px;">
-                <span>Deposits</span>
-                <span>₦${formatNumber(totalDeposit)}</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;">
-                <span><b>Ending Balance</b></span>
-                <span style="color:${endingBalance < 0 ? 'red' : '#0a7d00'};">
-                    <b>₦${formatNumber(endingBalance)}</b>
-                </span>
-            </div>
-
-        </div>
-    </div>
-    `;
-
-    // =========================
-    // FULL DOCUMENT
-    // =========================
-    const html = `
-    <html xmlns:o='urn:schemas-microsoft-com:office:office'
-          xmlns:w='urn:schemas-microsoft-com:office:word'>
-    <head>
-        <meta charset="utf-8">
-
-        <style>
-            body {
-                font-family: Calibri, "Segoe UI", Arial, sans-serif;
-                margin: 20px;
-            }
-
-            h2 {
-                text-align: center;
-                margin-bottom: 5px;
-            }
-
-            h3 {
-                text-align: center;
-                margin-top: 0;
-                margin-bottom: 20px;
-                font-weight: normal;
-            }
-
-            p {
-                margin-left: 5%;
-                font-size: 12px;
-            }
-
-            table {
-                border-collapse: collapse;
-                width: 90%;
-                margin: auto;
-                font-size: 11px;
-            }
-
-            th, td {
-                border: 1px solid black;
-                padding: 6px;
-                text-align: right;
-            }
-
-            th {
-                background: black;
-                color: white;
-                text-align: center;
-            }
-
-            td:nth-child(2) {
-                text-align: left;
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <h2>NEW KUJE SHOPPING COMPLEX SALES REPORT</h2>
-        <h3>(Car Park - ${summary.month} ${summary.year})</h3>
-
-        <p><b>Account:</b> MONIEPOINT 5058523746 — Okiky Hotel and Suites Ltd</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Parking Cash</th>
-                    <th>E-Tag Cash</th>
-                    <th>Parking Bank</th>
-                    <th>E-Tag Bank</th>
-                    <th>Total Sales</th>
-                    <th>Expenses</th>
-                    <th>Deposit</th>
-                    <th>Account</th>
-                    <th>Cash Balance</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                ${rows}
-            </tbody>
-        </table>
-
-        ${summaryBox}
-
-        <div style="
-            width:85%;
-            margin:20px auto 0;
-            font-size:10px;
-            color:#555;
-            border-top:1px solid #ddd;
-            padding-top:10px;
-            line-height:1.5;
-        ">
-
-            <div>
-                Report generated with <b>ParkFlow System</b>
-            </div>
-
-            <div>
-                ${new Date().toLocaleString()}
-            </div>
-
-            <div style="margin-top:4px;">
-                <a href="https://kujeshoppingcomplexparkflow.netlify.app" 
-                style="color:#1a73e8; text-decoration:none;">
-                kujeshoppingcomplexparkflow.netlify.app
-                </a>
-            </div>
-
-        </div>
-
-    </body>
-    </html>
-    `;
-
-    // =========================
-    // DOWNLOAD
-    // =========================
-    const blob = new Blob(['\ufeff', html], {
-        type: 'application/msword'
+    const summaryBox = new docx.Table({
+        rows: summaryBoxRows,
+        width:{ size:80, type: docx.WidthType.PERCENTAGE },
+        borders:{ top:{style:"single", size:2, color:"CCCCCC"}, bottom:{style:"single", size:2, color:"CCCCCC"}, left:{style:"single", size:2, color:"CCCCCC"}, right:{style:"single", size:2, color:"CCCCCC"} }
     });
 
-    const url = URL.createObjectURL(blob);
+    const timestamp = new Date().toLocaleString();
 
+    const doc = new docx.Document({
+        sections:[
+            {
+                properties:{ page:{ margin:{ top:720, right:360, bottom:720, left:360 } } },
+                children:[
+                    new docx.Paragraph({ text:"NEW KUJE SHOPPING COMPLEX SALES REPORT", alignment:docx.AlignmentType.CENTER, bold:true, size:40, spacing:{after:200} }),
+                    new docx.Paragraph({ text:`(Car Park - ${summary.month} ${summary.year})`, alignment:docx.AlignmentType.CENTER, bold:true, size:30, spacing:{after:200} }),
+                    new docx.Paragraph({ text:`Account: MONIEPOINT 5058523746 — Okiky Hotel and Suites Ltd`, spacing:{after:200} }),
+                    table,
+                    new docx.Paragraph({ children: [], pageBreakBefore:true }),
+                    new docx.Paragraph({ text:"Monthly Sales Summary", alignment:docx.AlignmentType.CENTER, bold:true, size:32, spacing:{after:200} }),
+                    new docx.Paragraph({ text:`${summary.month} ${summary.year}`, alignment:docx.AlignmentType.CENTER, bold:true, size:28, spacing:{after:200} }),
+                    summaryBox,
+                    new docx.Paragraph({ text:`Generated with ParkFlow System — ${timestamp}`, italics:true, spacing:{before:300, after:100} }),
+                    new docx.Paragraph({
+                        children:[
+                            new docx.ExternalHyperlink({ 
+                                link:"https://kujeshoppingcomplexparkflow.netlify.app",
+                                children:[ new docx.TextRun({ text:"kujeshoppingcomplexparkflow.netlify.app", style:"Hyperlink" }) ]
+                            })
+                        ]
+                    })
+                ]
+            }
+        ]
+    });
+
+    const blob = await docx.Packer.toBlob(doc);
     const a = document.createElement("a");
-    a.href = url;
-    a.download = `Sales-Report-${summary.month}-${summary.year}.doc`;
-
+    a.href = URL.createObjectURL(blob);
+    a.download = `Sales-Report-${summary.month}-${summary.year}.docx`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -753,7 +640,7 @@ function downloadWord() {
 
 document.querySelector('.pdf').addEventListener('click', downloadPDF);
 
-document.querySelector('.word').addEventListener('click', downloadWord);
+document.querySelector('.word').addEventListener('click', downloadWordDocx);
 
 /* =========================
    INIT
