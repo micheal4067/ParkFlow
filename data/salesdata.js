@@ -967,9 +967,9 @@ parkingCash:7200,
 etagCash:0,
 parkingBank:0,
 etagBank:0,
-expenses:0,
-deposit:0,
-account:0
+expenses:400,
+deposit:42500,
+account:42500
 }
 
 }
