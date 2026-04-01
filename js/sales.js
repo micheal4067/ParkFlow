@@ -469,17 +469,17 @@ async function downloadWordDocx() {
             children: [new docx.Paragraph({ text, bold: true, alignment: docx.AlignmentType.CENTER })],
             shading: { type: docx.ShadingType.CLEAR, fill: "000000" },
             width: { size: headerWidths[i], type: docx.WidthType.DXA },
-            margins: { top:150, bottom:150, left:120, right:120 }
+            margins: { top:100, bottom:100, left:80, right:80 } // reduced padding
         }))
     }));
 
     // Balance B/F
     tableRows.push(new docx.TableRow({
         children: [
-            new docx.TableCell({ children: [new docx.Paragraph("--")] , width: { size:1500, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children: [new docx.Paragraph({ text: "Balance B/F", bold:true })], width: { size:3000, type: docx.WidthType.DXA } }),
-            ...Array(8).fill(new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:2000, type: docx.WidthType.DXA } })),
-            new docx.TableCell({ children: [new docx.Paragraph(formatNumber(balanceBF))], width: { size:2000, type: docx.WidthType.DXA } })
+            new docx.TableCell({ children: [new docx.Paragraph("--")] , width: { size:1500, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children: [new docx.Paragraph({ text: "Balance B/F", bold:true })], width: { size:3000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            ...Array(8).fill(new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} })),
+            new docx.TableCell({ children: [new docx.Paragraph(formatNumber(balanceBF))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} })
         ]
     }));
 
@@ -521,11 +521,11 @@ async function downloadWordDocx() {
                 children:[new docx.Paragraph({ 
                     text, 
                     color: textColor, 
-                    bold: j === 6 // make the Total Sales column bold
+                    bold: j === 6 // bold the Total Sales column
                 })],
                 width: { size: headerWidths[j], type: docx.WidthType.DXA },
                 shading: rowColor ? { type: docx.ShadingType.CLEAR, fill: rowColor } : undefined,
-                margins:{top:150,bottom:150,left:120,right:120}
+                margins:{top:100,bottom:100,left:80,right:80} // reduced padding
             })),
             cantSplit:true,
             height: { value: 400, rule:"atLeast" }
@@ -544,18 +544,18 @@ async function downloadWordDocx() {
     // TOTAL row
     tableRows.push(new docx.TableRow({
         children: [
-            new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:1500, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph({ text:"TOTAL", bold:true })], width: { size:3000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingCash))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagCash))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingBank))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagBank))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalSales), { bold:true })], width: { size:2000, type: docx.WidthType.DXA } }, // TOTAL SALES bold
+            new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:1500, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph({ text:"TOTAL", bold:true })], width: { size:3000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingCash))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagCash))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingBank))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagBank))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalSales), { bold:true })], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} },
             ),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalExpenses))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalDeposit))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalAccount))], width: { size:2000, type: docx.WidthType.DXA } }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(runningBalance))], width: { size:2000, type: docx.WidthType.DXA } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalExpenses))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalDeposit))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalAccount))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(runningBalance))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
         ],
         shading:{ type: docx.ShadingType.CLEAR, fill:"EAEAEA" },
         cantSplit:true,
@@ -569,7 +569,7 @@ async function downloadWordDocx() {
     const totalParkingTotal = totalParkingCash + totalParkingBank;
     const totalETagTotal = totalETagCash + totalETagBank;
 
-    // Summary box (unchanged, professional style)
+    // Summary box: centered and stretched
     const summaryBoxRows = [
         ["Total Revenue", totalSales],
         ["Parking Sales", totalParkingTotal],
@@ -583,19 +583,20 @@ async function downloadWordDocx() {
             new docx.TableCell({
                 children:[new docx.Paragraph({ text: label, bold:true })],
                 shading:{ type: docx.ShadingType.CLEAR, fill:"F3F3F3" },
-                margins:{ top:150,bottom:150,left:200,right:200 }
+                margins:{ top:120,bottom:120,left:150,right:150 }
             }),
             new docx.TableCell({
                 children:[new docx.Paragraph({ text:`₦${formatNumber(value)}`, bold:true, color:value<0?"FF0000":"0A7D00" })],
                 shading:{ type: docx.ShadingType.CLEAR, fill:"F3F3F3" },
-                margins:{ top:150,bottom:150,left:200,right:200 }
+                margins:{ top:120,bottom:120,left:150,right:150 }
             })
         ]
     }));
 
     const summaryBox = new docx.Table({
         rows: summaryBoxRows,
-        width:{ size:80, type: docx.WidthType.PERCENTAGE },
+        width:{ size:90, type: docx.WidthType.PERCENTAGE }, // stretched
+        alignment: docx.AlignmentType.CENTER, // centered
         borders:{ top:{style:"single", size:2, color:"CCCCCC"}, bottom:{style:"single", size:2, color:"CCCCCC"}, left:{style:"single", size:2, color:"CCCCCC"}, right:{style:"single", size:2, color:"CCCCCC"} }
     });
 
