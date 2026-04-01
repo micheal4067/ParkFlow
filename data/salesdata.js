@@ -951,7 +951,7 @@ account:0
 30:{
 desc:"Sales",
 tickets:117,
-parkingCash:0,
+parkingCash:9800,
 etagCash:0,
 parkingBank:0,
 etagBank:0,
@@ -962,8 +962,8 @@ account:0
 
 31:{
 desc:"Sales",
-tickets:0,
-parkingCash:0,
+tickets:114,
+parkingCash:7200,
 etagCash:0,
 parkingBank:0,
 etagBank:0,
