@@ -461,30 +461,29 @@ async function downloadWordDocx() {
 
     const tableRows = [];
     const headers = ["Date","Description","Parking Cash","E-Tag Cash","Parking Bank","E-Tag Bank","Total Sales","Expenses","Deposit","Account","Cash Balance"];
-    const headerWidths = [1500, 3000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000];
 
     // Table Header
     tableRows.push(new docx.TableRow({
-        children: headers.map((text,i) => new docx.TableCell({
+        children: headers.map(text => new docx.TableCell({
             children: [new docx.Paragraph({ text, bold: true, alignment: docx.AlignmentType.CENTER })],
-            shading: { type: docx.ShadingType.CLEAR, fill: "000000" },
-            width: { size: headerWidths[i], type: docx.WidthType.DXA },
-            margins: { top:100, bottom:100, left:80, right:80 } // reduced padding
+            margins: { top: 100, bottom: 100, left: 80, right: 80 },
+            verticalAlign: docx.VerticalAlign.CENTER,
+            shading: { type: docx.ShadingType.CLEAR, fill: "000000" }
         }))
     }));
 
     // Balance B/F
     tableRows.push(new docx.TableRow({
         children: [
-            new docx.TableCell({ children: [new docx.Paragraph("--")] , width: { size:1500, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children: [new docx.Paragraph({ text: "Balance B/F", bold:true })], width: { size:3000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            ...Array(8).fill(new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} })),
-            new docx.TableCell({ children: [new docx.Paragraph(formatNumber(balanceBF))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} })
+            new docx.TableCell({ children: [new docx.Paragraph("--")], margins: { top: 100, bottom: 100, left: 80, right: 80 } }),
+            new docx.TableCell({ children: [new docx.Paragraph({ text: "Balance B/F", bold: true })], margins: { top: 100, bottom: 100, left: 80, right: 80 } }),
+            ...Array(8).fill(new docx.TableCell({ children: [new docx.Paragraph("")], margins: { top: 100, bottom: 100, left: 80, right: 80 } })),
+            new docx.TableCell({ children: [new docx.Paragraph(formatNumber(balanceBF))], margins: { top: 100, bottom: 100, left: 80, right: 80 } })
         ]
     }));
 
     // Daily rows
-    for(let i=1;i<=days;i++){
+    for (let i = 1; i <= days; i++) {
         const d = data[i] || {};
         const parkingCash = d.parkingCash || 0;
         const etagCash = d.etagCash || 0;
@@ -498,9 +497,9 @@ async function downloadWordDocx() {
         const dailyCash = parkingCash + etagCash;
         runningBalance += dailyCash - expenses - deposit;
 
-        const isOff = (d.desc||"").toUpperCase() === "OFF";
+        const isOff = (d.desc || "").toUpperCase() === "OFF";
         const rowColor = isOff ? "000000" : undefined;
-        const textColor = isOff ? "FFFFFF" : (runningBalance<0 ? "FF0000":"0A7D00");
+        const textColor = isOff ? "FFFFFF" : (runningBalance < 0 ? "FF0000" : "0A7D00");
 
         const rowCells = [
             String(i).padStart(2,"0"),
@@ -509,7 +508,7 @@ async function downloadWordDocx() {
             formatNumber(etagCash),
             formatNumber(parkingBank),
             formatNumber(etagBank),
-            formatNumber(total), // TOTAL SALES
+            formatNumber(total),
             formatNumber(expenses),
             formatNumber(deposit),
             formatNumber(account),
@@ -517,18 +516,12 @@ async function downloadWordDocx() {
         ];
 
         tableRows.push(new docx.TableRow({
-            children: rowCells.map((text,j)=> new docx.TableCell({
-                children:[new docx.Paragraph({ 
-                    text, 
-                    color: textColor, 
-                    bold: j === 6 // bold the Total Sales column
-                })],
-                width: { size: headerWidths[j], type: docx.WidthType.DXA },
-                shading: rowColor ? { type: docx.ShadingType.CLEAR, fill: rowColor } : undefined,
-                margins:{top:100,bottom:100,left:80,right:80} // reduced padding
-            })),
-            cantSplit:true,
-            height: { value: 400, rule:"atLeast" }
+            children: rowCells.map((text,j) => new docx.TableCell({
+                children:[new docx.Paragraph({ text, color:textColor, bold:j===6 || isOff })],
+                margins:{ top:80, bottom:80, left:50, right:50 },
+                verticalAlign: docx.VerticalAlign.CENTER,
+                shading: isOff ? { type: docx.ShadingType.CLEAR, fill:"000000" } : undefined
+            }))
         }));
 
         totalParkingCash += parkingCash;
@@ -544,32 +537,33 @@ async function downloadWordDocx() {
     // TOTAL row
     tableRows.push(new docx.TableRow({
         children: [
-            new docx.TableCell({ children:[new docx.Paragraph("")], width: { size:1500, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph({ text:"TOTAL", bold:true })], width: { size:3000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingCash))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagCash))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingBank))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagBank))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalSales), { bold:true })], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} },
-            ),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalExpenses))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalDeposit))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalAccount))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
-            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(runningBalance))], width: { size:2000, type: docx.WidthType.DXA }, margins:{top:100,bottom:100,left:80,right:80} }),
+            new docx.TableCell({ children:[new docx.Paragraph("")], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph({ text:"TOTAL", bold:true })], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingCash))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagCash))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalParkingBank))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalETagBank))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalSales), { bold:true })], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalExpenses))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalDeposit))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(totalAccount))], margins:{ top:80,bottom:80,left:50,right:50 } }),
+            new docx.TableCell({ children:[new docx.Paragraph(formatNumber(runningBalance))], margins:{ top:80,bottom:80,left:50,right:50 } }),
         ],
-        shading:{ type: docx.ShadingType.CLEAR, fill:"EAEAEA" },
-        cantSplit:true,
-        height:{value:400,rule:"atLeast"}
+        shading:{ type: docx.ShadingType.CLEAR, fill:"EAEAEA" }
     }));
 
-    const table = new docx.Table({ rows: tableRows, width:{ size:100, type:docx.WidthType.PERCENTAGE } });
+    const table = new docx.Table({
+        rows: tableRows,
+        width: { size: 100, type: docx.WidthType.PERCENTAGE },
+        columnWidths: Array(11).fill(undefined)
+    });
 
+    // Summary box
     const endingBalance = runningBalance;
     const totalCashGenerated = totalParkingCash + totalETagCash;
     const totalParkingTotal = totalParkingCash + totalParkingBank;
     const totalETagTotal = totalETagCash + totalETagBank;
 
-    // Summary box: centered and stretched
     const summaryBoxRows = [
         ["Total Revenue", totalSales],
         ["Parking Sales", totalParkingTotal],
@@ -595,38 +589,44 @@ async function downloadWordDocx() {
 
     const summaryBox = new docx.Table({
         rows: summaryBoxRows,
-        width:{ size:90, type: docx.WidthType.PERCENTAGE }, // stretched
-        alignment: docx.AlignmentType.CENTER, // centered
-        borders:{ top:{style:"single", size:2, color:"CCCCCC"}, bottom:{style:"single", size:2, color:"CCCCCC"}, left:{style:"single", size:2, color:"CCCCCC"}, right:{style:"single", size:2, color:"CCCCCC"} }
+        width: { size: 90, type: docx.WidthType.PERCENTAGE },
+        alignment: docx.AlignmentType.CENTER,
+        columnWidths: [4000,4000],
+        borders:{
+            top:{style:"single",size:2,color:"CCCCCC"},
+            bottom:{style:"single",size:2,color:"CCCCCC"},
+            left:{style:"single",size:2,color:"CCCCCC"},
+            right:{style:"single",size:2,color:"CCCCCC"}
+        }
     });
 
     const timestamp = new Date().toLocaleString();
 
     const doc = new docx.Document({
-        sections:[
-            {
-                properties:{ page:{ margin:{ top:720, right:360, bottom:720, left:360 } } },
-                children:[
-                    new docx.Paragraph({ text:"NEW KUJE SHOPPING COMPLEX SALES REPORT", alignment:docx.AlignmentType.CENTER, bold:true, size:40, spacing:{after:200} }),
-                    new docx.Paragraph({ text:`(Car Park - ${summary.month} ${summary.year})`, alignment:docx.AlignmentType.CENTER, bold:true, size:30, spacing:{after:200} }),
-                    new docx.Paragraph({ text:`Account: MONIEPOINT 5058523746 — Okiky Hotel and Suites Ltd`, spacing:{after:200} }),
-                    table,
-                    new docx.Paragraph({ children: [], pageBreakBefore:true }),
-                    new docx.Paragraph({ text:"Monthly Sales Summary", alignment:docx.AlignmentType.CENTER, bold:true, size:32, spacing:{after:200} }),
-                    new docx.Paragraph({ text:`${summary.month} ${summary.year}`, alignment:docx.AlignmentType.CENTER, bold:true, size:28, spacing:{after:200} }),
-                    summaryBox,
-                    new docx.Paragraph({ text:`Generated with ParkFlow System — ${timestamp}`, italics:true, spacing:{before:300, after:100} }),
-                    new docx.Paragraph({
-                        children:[
-                            new docx.ExternalHyperlink({ 
-                                link:"https://kujeshoppingcomplexparkflow.netlify.app",
-                                children:[ new docx.TextRun({ text:"kujeshoppingcomplexparkflow.netlify.app", style:"Hyperlink" }) ]
-                            })
-                        ]
-                    })
-                ]
-            }
-        ]
+        sections:[{
+            properties:{ page:{ margin:{ top:720, right:360, bottom:720, left:360 } } },
+            children:[
+                new docx.Paragraph({ text:"NEW KUJE SHOPPING COMPLEX SALES REPORT", alignment:docx.AlignmentType.CENTER, bold:true, size:44, spacing:{after:200} }),
+                new docx.Paragraph({ text:`(Car Park - ${summary.month} ${summary.year})`, alignment:docx.AlignmentType.CENTER, bold:true, size:36, spacing:{after:200} }),
+                new docx.Paragraph({ text:`Account: MONIEPOINT 5058523746 — Okiky Hotel and Suites Ltd`, spacing:{after:200} }),
+                table,
+                // Spacing before summary
+                new docx.Paragraph({ text:"", spacing:{ before:400, after:400 } }),
+                // Summary box — auto pagination
+                new docx.Paragraph({ text:"Monthly Sales Summary", alignment:docx.AlignmentType.CENTER, bold:true, size:36, spacing:{after:200} }),
+                new docx.Paragraph({ text:`${summary.month} ${summary.year}`, alignment:docx.AlignmentType.CENTER, bold:true, size:32, spacing:{after:200} }),
+                summaryBox,
+                new docx.Paragraph({ text:`Generated with ParkFlow System — ${timestamp}`, italics:true, spacing:{before:300, after:100} }),
+                new docx.Paragraph({
+                    children:[
+                        new docx.ExternalHyperlink({
+                            link:"https://kujeshoppingcomplexparkflow.netlify.app",
+                            children:[ new docx.TextRun({ text:"kujeshoppingcomplexparkflow.netlify.app", style:"Hyperlink" }) ]
+                        })
+                    ]
+                })
+            ]
+        }]
     });
 
     const blob = await docx.Packer.toBlob(doc);
