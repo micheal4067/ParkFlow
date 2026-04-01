@@ -445,10 +445,315 @@ function downloadPDF() {
     doc.save(`Sales-Report-${summary.month}-${summary.year}.pdf`);
 }
 
-// Utility function for formatting Naira with commas
+function downloadWord() {
+    const selected = monthPicker.value;
+    const summary = generateMonthlySummary(selected);
+    const data = SalesData[selected] || {};
+
+    const date = new Date(selected + "-01");
+    const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+    let runningBalance = getPreviousMonthBalance(selected);
+    const balanceBF = runningBalance;
+
+    let rows = "";
+
+    let totalParkingCash = 0, totalETagCash = 0, totalParkingBank = 0, totalETagBank = 0;
+    let totalSales = 0, totalExpenses = 0, totalDeposit = 0, totalAccount = 0;
+
+    // =========================
+    // BALANCE B/F
+    // =========================
+    rows += `
+    <tr style="font-weight:bold; background:#f2f2f2;">
+        <td>--</td>
+        <td>Balance B/F</td>
+        <td colspan="8"></td>
+        <td>${formatNumber(balanceBF)}</td>
+    </tr>
+    `;
+
+    // =========================
+    // DAILY ROWS
+    // =========================
+    for (let i = 1; i <= days; i++) {
+        const d = data[i] || {};
+
+        const parkingCash = d.parkingCash || 0;
+        const etagCash = d.etagCash || 0;
+        const parkingBank = d.parkingBank || 0;
+        const etagBank = d.etagBank || 0;
+        const expenses = d.expenses || 0;
+        const deposit = d.deposit || 0;
+        const account = d.account || 0;
+
+        const total = parkingCash + etagCash + parkingBank + etagBank;
+        const dailyCash = parkingCash + etagCash;
+
+        runningBalance = runningBalance + dailyCash - expenses - deposit;
+
+        const isOff = (d.desc || "").toUpperCase() === "OFF";
+
+        rows += `
+        <tr style="${isOff ? 'background:black; color:white; font-weight:bold;' : ''}">
+            <td>${String(i).padStart(2, "0")}</td>
+            <td>${d.desc || "Sales"}</td>
+            <td>${formatNumber(parkingCash)}</td>
+            <td>${formatNumber(etagCash)}</td>
+            <td>${formatNumber(parkingBank)}</td>
+            <td>${formatNumber(etagBank)}</td>
+            <td>${formatNumber(total)}</td>
+            <td>${formatNumber(expenses)}</td>
+            <td>${formatNumber(deposit)}</td>
+            <td>${formatNumber(account)}</td>
+            <td style="color:${isOff ? 'white' : (runningBalance < 0 ? 'red' : '#0a7d00')}">
+                ${formatNumber(runningBalance)}
+            </td>
+        </tr>
+        `;
+
+        totalParkingCash += parkingCash;
+        totalETagCash += etagCash;
+        totalParkingBank += parkingBank;
+        totalETagBank += etagBank;
+        totalSales += total;
+        totalExpenses += expenses;
+        totalDeposit += deposit;
+        totalAccount += account;
+    }
+
+    // =========================
+    // TOTAL ROW
+    // =========================
+    rows += `
+    <tr style="font-weight:bold; background:#eaeaea;">
+        <td></td>
+        <td>TOTAL</td>
+        <td>${formatNumber(totalParkingCash)}</td>
+        <td>${formatNumber(totalETagCash)}</td>
+        <td>${formatNumber(totalParkingBank)}</td>
+        <td>${formatNumber(totalETagBank)}</td>
+        <td>${formatNumber(totalSales)}</td>
+        <td>${formatNumber(totalExpenses)}</td>
+        <td>${formatNumber(totalDeposit)}</td>
+        <td>${formatNumber(totalAccount)}</td>
+        <td>${formatNumber(runningBalance)}</td>
+    </tr>
+    `;
+
+    // =========================
+    // SUMMARY VALUES
+    // =========================
+    const totalCashGenerated = totalParkingCash + totalETagCash;
+    const totalParkingTotal = totalParkingCash + totalParkingBank;
+    const totalETagTotal = totalETagCash + totalETagBank;
+    const endingBalance = runningBalance;
+
+    // =========================
+    // CLEAN SUMMARY CARD
+    // =========================
+    const summaryBox = `
+    <div style="width:85%; margin:40px auto; font-size:12px;">
+
+        <div style="text-align:center; font-weight:bold; font-size:14px; margin-bottom:10px;">
+            Monthly Sales Summary
+        </div>
+
+        <div style="text-align:center; margin-bottom:15px;">
+            ${summary.month} ${summary.year}
+        </div>
+
+        <div style="
+            border:1px solid #ddd;
+            border-radius:6px;
+            padding:18px;
+            background:#fafafa;
+        ">
+
+            <div style="display:flex; justify-content:space-between;">
+                <span><b>Total Revenue</b></span>
+                <span><b>₦${formatNumber(totalSales)}</b></span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:6px;">
+                <span>Parking Sales</span>
+                <span>₦${formatNumber(totalParkingTotal)}</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:4px;">
+                <span>E-Tag Sales</span>
+                <span>₦${formatNumber(totalETagTotal)}</span>
+            </div>
+
+            <div style="border-top:1px solid #ddd; margin:12px 0;"></div>
+
+            <div style="display:flex; justify-content:space-between;">
+                <span>Balance B/F</span>
+                <span>₦${formatNumber(balanceBF)}</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:6px;">
+                <span><b>Cash Generated</b></span>
+                <span><b>₦${formatNumber(totalCashGenerated)}</b></span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:6px;">
+                <span>Deposits</span>
+                <span>₦${formatNumber(totalDeposit)}</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:13px;">
+                <span><b>Ending Balance</b></span>
+                <span style="color:${endingBalance < 0 ? 'red' : '#0a7d00'};">
+                    <b>₦${formatNumber(endingBalance)}</b>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    `;
+
+    // =========================
+    // FULL DOCUMENT
+    // =========================
+    const html = `
+    <html xmlns:o='urn:schemas-microsoft-com:office:office'
+          xmlns:w='urn:schemas-microsoft-com:office:word'>
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+            body {
+                font-family: Calibri, "Segoe UI", Arial, sans-serif;
+                margin: 20px;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            h3 {
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-weight: normal;
+            }
+
+            p {
+                margin-left: 5%;
+                font-size: 12px;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 90%;
+                margin: auto;
+                font-size: 11px;
+            }
+
+            th, td {
+                border: 1px solid black;
+                padding: 6px;
+                text-align: right;
+            }
+
+            th {
+                background: black;
+                color: white;
+                text-align: center;
+            }
+
+            td:nth-child(2) {
+                text-align: left;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h2>NEW KUJE SHOPPING COMPLEX SALES REPORT</h2>
+        <h3>(Car Park - ${summary.month} ${summary.year})</h3>
+
+        <p><b>Account:</b> MONIEPOINT 5058523746 — Okiky Hotel and Suites Ltd</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Parking Cash</th>
+                    <th>E-Tag Cash</th>
+                    <th>Parking Bank</th>
+                    <th>E-Tag Bank</th>
+                    <th>Total Sales</th>
+                    <th>Expenses</th>
+                    <th>Deposit</th>
+                    <th>Account</th>
+                    <th>Cash Balance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                ${rows}
+            </tbody>
+        </table>
+
+        ${summaryBox}
+
+        <div style="
+            width:85%;
+            margin:20px auto 0;
+            font-size:10px;
+            color:#555;
+            border-top:1px solid #ddd;
+            padding-top:10px;
+            line-height:1.5;
+        ">
+
+            <div>
+                Report generated with <b>ParkFlow System</b>
+            </div>
+
+            <div>
+                ${new Date().toLocaleString()}
+            </div>
+
+            <div style="margin-top:4px;">
+                <a href="https://kujeshoppingcomplexparkflow.netlify.app" 
+                style="color:#1a73e8; text-decoration:none;">
+                kujeshoppingcomplexparkflow.netlify.app
+                </a>
+            </div>
+
+        </div>
+
+    </body>
+    </html>
+    `;
+
+    // =========================
+    // DOWNLOAD
+    // =========================
+    const blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Sales-Report-${summary.month}-${summary.year}.doc`;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
 
 document.querySelector('.pdf').addEventListener('click', downloadPDF);
+
+document.querySelector('.word').addEventListener('click', downloadWord);
 
 /* =========================
    INIT
