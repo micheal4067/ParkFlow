@@ -972,6 +972,20 @@ deposit:42500,
 account:42500
 }
 
+},
+
+"2026-04" :{
+  1:{
+    desc:"Sales",
+    tickets:144,
+    parkingCash:8700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  }
 }
 
 };
@@ -1047,7 +1061,8 @@ export const etags = [
   { name: "Erutor Onone Rosemary", shopNo: "D0-51", tagId: "317447", activated: "2026-03-27", expires: "2027-03-27" },
   { name: "Sylvester Olorunfemi", shopNo: "B1-06", tagId: "317458", activated: "2026-03-27", expires: "2027-03-27" },
 
-  { name: "K'S Fabric & Collections", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" }
+  { name: "K'S Fabric & Collections", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" },
+  { name: "Muhammed Robrat", shopNo: "E0-57", tagId: "317449", activated: "2026-04-01", expires: "2027-04-01" }
 ];
 
 export function getMonthlyStats(yearMonth){
