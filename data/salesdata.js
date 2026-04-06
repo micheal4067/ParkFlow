@@ -982,6 +982,66 @@ account:42500
     etagCash:0,
     parkingBank:0,
     etagBank:7500,
+    expenses:2500,
+    deposit:0,
+    account:0
+  },
+
+  2:{
+    desc:"Sales",
+    tickets:114,
+    parkingCash:8700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:21400,
+    account:21400
+  },
+
+  3:{
+    desc:"Sales",
+    tickets:122,
+    parkingCash:11000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  4:{
+    desc:"Sales",
+    tickets:144,
+    parkingCash:11800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:300,
+    deposit:36400,
+    account:36400
+  },
+
+  5:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  6:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
     expenses:0,
     deposit:0,
     account:0
@@ -991,7 +1051,7 @@ account:42500
 };
 
 export const etags = [
-  { name: "Koda Zra John", shopNo: "B1-55", tagId: "Not Issued", activated: "2026-02-01", expires: "2027-02-01" },
+  { name: "Koda Zra John", shopNo: "B1-55", tagId: "317494", activated: "2026-02-01", expires: "2027-02-01" },
   { name: "Zainab Muhammed", shopNo: "B0-41/42", tagId: "317439", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Adesola Halia", shopNo: "G-27", tagId: "317417", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Mr David", shopNo: "P/I-01", tagId: "317400", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1050,7 +1110,7 @@ export const etags = [
    { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "Not Issued", activated: "2026-03-14", expires: "2027-03-14" },
    { name: "Chika Jegede", shopNo: "P/I-06", tagId: "Not Issued", activated: "2026-03-16", expires: "2027-03-16" },
    { name: "Binga Kyepari", shopNo: "E0-53", tagId: "317443", activated: "2026-03-17", expires: "2027-03-17" },
-   { name: "Salimat Usman", shopNo: "E1-22", tagId: "Not Issued", activated: "2026-03-17", expires: "2027-03-17" },
+   { name: "Salimat Usman", shopNo: "E1-22", tagId: "317495", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Abdul Hassan B", shopNo: "B1-18", tagId: "317498", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Musa Dorathy", shopNo: "E1-31", tagId: "Not Issued", activated: "2026-03-23", expires: "2027-03-23" },
    { name: "Samuel Jeremiah", shopNo: "E1-34", tagId: "317456", activated: "2026-03-23", expires: "2027-03-23" },
@@ -1062,7 +1122,8 @@ export const etags = [
   { name: "Sylvester Olorunfemi", shopNo: "B1-06", tagId: "317458", activated: "2026-03-27", expires: "2027-03-27" },
 
   { name: "K'S Fabric & Collections", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" },
-  { name: "Muhammed Robrat", shopNo: "E0-57", tagId: "317449", activated: "2026-04-01", expires: "2027-04-01" }
+  { name: "Muhammed Robrat", shopNo: "E0-57", tagId: "317449", activated: "2026-04-01", expires: "2027-04-01" },
+  { name: "Blessing Abdulwahab", shopNo: "B1-35", tagId: "317496", activated: "2026-04-02", expires: "2027-04-02" }
 ];
 
 export function getMonthlyStats(yearMonth){
