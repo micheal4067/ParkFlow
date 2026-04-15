@@ -981,7 +981,7 @@ account:42500
     parkingCash:8700,
     etagCash:0,
     parkingBank:0,
-    etagBank:7500,
+    etagBank:15000,
     expenses:2500,
     deposit:0,
     account:0
@@ -1037,12 +1037,108 @@ account:42500
 
   6:{
     desc:"Sales",
+    tickets:78,
+    parkingCash:5700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  7:{
+    desc:"Sales",
+    tickets:92,
+    parkingCash:6100,
+    etagCash:7500,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:7500,
+    account:7500
+  },
+
+  8:{
+    desc:"Sales",
+    tickets:95,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  9:{
+    desc:"Sales",
+    tickets:80,
+    parkingCash:5800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:3750,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  10:{
+    desc:"Sales",
+    tickets:95,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  11:{
+    desc:"Sales",
+    tickets:102,
+    parkingCash:7400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  12:{
+    desc:"OFF",
     tickets:0,
     parkingCash:0,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
     expenses:0,
+    deposit:32600,
+    account:32600
+  },
+
+  13:{
+    desc:"Sales",
+    tickets:107,
+    parkingCash:10500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+    14:{
+    desc:"Sales",
+    tickets:76,
+    parkingCash:9000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:2500,
     deposit:0,
     account:0
   }
@@ -1112,7 +1208,7 @@ export const etags = [
    { name: "Binga Kyepari", shopNo: "E0-53", tagId: "317443", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Salimat Usman", shopNo: "E1-22", tagId: "317495", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Abdul Hassan B", shopNo: "B1-18", tagId: "317498", activated: "2026-03-17", expires: "2027-03-17" },
-   { name: "Musa Dorathy", shopNo: "E1-31", tagId: "Not Issued", activated: "2026-03-23", expires: "2027-03-23" },
+   { name: "Musa Dorathy", shopNo: "E1-31", tagId: "317481", activated: "2026-03-23", expires: "2027-03-23" },
    { name: "Samuel Jeremiah", shopNo: "E1-34", tagId: "317456", activated: "2026-03-23", expires: "2027-03-23" },
 
   { name: "Mrs Ogommacus", shopNo: "C0-46", tagId: "317446", activated: "2026-03-25", expires: "2027-03-25" },
@@ -1121,9 +1217,14 @@ export const etags = [
   { name: "Erutor Onone Rosemary", shopNo: "D0-51", tagId: "317447", activated: "2026-03-27", expires: "2027-03-27" },
   { name: "Sylvester Olorunfemi", shopNo: "B1-06", tagId: "317458", activated: "2026-03-27", expires: "2027-03-27" },
 
-  { name: "K'S Fabric & Collections", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" },
+  { name: "K'S Fabric & Collections(Mrs Boboye)", shopNo: "C0-47", tagId: "317451", activated: "2026-03-27", expires: "2027-03-27" },
   { name: "Muhammed Robrat", shopNo: "E0-57", tagId: "317449", activated: "2026-04-01", expires: "2027-04-01" },
-  { name: "Blessing Abdulwahab", shopNo: "B1-35", tagId: "317496", activated: "2026-04-02", expires: "2027-04-02" }
+  { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "317493", activated: "2026-04-01", expires: "2027-04-01" },
+  { name: "Blessing Abdulwahab", shopNo: "B1-35", tagId: "317496", activated: "2026-04-02", expires: "2027-04-02" },
+
+  { name: "Egbekunle Olugbenga", shopNo: "D0-53", tagId: "317450", activated: "2026-04-07", expires: "2027-04-07" },
+   { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "Not Issued", activated: "2026-04-09", expires: "2027-04-09" },
+   { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
 ];
 
 export function getMonthlyStats(yearMonth){
