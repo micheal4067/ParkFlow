@@ -1141,6 +1141,78 @@ account:42500
     expenses:2500,
     deposit:0,
     account:0
+  },
+
+   15:{
+    desc:"Sales",
+    tickets:105,
+    parkingCash:9100,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   16:{
+    desc:"Sales",
+    tickets:126,
+    parkingCash:8600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:8600,
+    account:8600
+  },
+
+  17:{
+    desc:"Sales",
+    tickets:102,
+    parkingCash:8500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:42000,
+    account:42000
+  },
+
+   18:{
+    desc:"Sales",
+    tickets:121,
+    parkingCash:9500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:9000,
+    account:9000
+  },
+
+   19:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   20:{
+    desc:"Sales",
+    tickets:121,
+    parkingCash:9500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:500,
+    account:500
   }
 }
 
@@ -1225,6 +1297,9 @@ export const etags = [
   { name: "Egbekunle Olugbenga", shopNo: "D0-53", tagId: "317450", activated: "2026-04-07", expires: "2027-04-07" },
    { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "Not Issued", activated: "2026-04-09", expires: "2027-04-09" },
    { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
+   { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
+    { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
+     { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" }
 ];
 
 export function getMonthlyStats(yearMonth){
