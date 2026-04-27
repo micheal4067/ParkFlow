@@ -1211,8 +1211,92 @@ account:42500
     parkingBank:0,
     etagBank:0,
     expenses:0,
-    deposit:500,
-    account:500
+    deposit:10000,
+    account:10000
+  },
+
+   21:{
+    desc:"Sales",
+    tickets:109,
+    parkingCash:10300,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:2500,
+    deposit:7800,
+    account:7800
+  },
+
+   22:{
+    desc:"Sales",
+    tickets:123,
+    parkingCash:9000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:9000,
+    account:9000
+  },
+
+   23:{
+    desc:"Sales",
+    tickets:110,
+    parkingCash:9000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:9000,
+    account:9000
+  },
+
+   24:{
+    desc:"Sales",
+    tickets:107,
+    parkingCash:8600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   25:{
+    desc:"Sales",
+    tickets:80,
+    parkingCash:6400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   26:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   27:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
   }
 }
 
@@ -1275,7 +1359,7 @@ export const etags = [
    { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
 
-   { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "Not Issued", activated: "2026-03-14", expires: "2027-03-14" },
+   { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "317489", activated: "2026-03-14", expires: "2027-03-14" },
    { name: "Chika Jegede", shopNo: "P/I-06", tagId: "Not Issued", activated: "2026-03-16", expires: "2027-03-16" },
    { name: "Binga Kyepari", shopNo: "E0-53", tagId: "317443", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Salimat Usman", shopNo: "E1-22", tagId: "317495", activated: "2026-03-17", expires: "2027-03-17" },
@@ -1299,7 +1383,8 @@ export const etags = [
    { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
    { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
     { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" }
+     { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
+     { name: "Festus", shopNo: "D1-04", tagId: "Not Activated", activated: "2026-04-22", expires: "2027-04-22" }
 ];
 
 export function getMonthlyStats(yearMonth){
