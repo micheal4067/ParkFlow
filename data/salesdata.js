@@ -1289,6 +1289,42 @@ account:42500
 
    27:{
     desc:"Sales",
+    tickets:108,
+    parkingCash:9000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+    28:{
+    desc:"Sales",
+    tickets:80,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+    29:{
+    desc:"Sales",
+    tickets:112,
+    parkingCash:8700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:24600,
+    account:24600
+  },
+
+    30:{
+    desc:"Sales",
     tickets:0,
     parkingCash:0,
     etagCash:0,
@@ -1318,7 +1354,7 @@ export const etags = [
   { name: "Fatimah Adenike", shopNo: "P/E-21/22/23", tagId: "317418", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Olaniyi Blessing", shopNo: "E0-39", tagId: "317405", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Ezeaba Ugochi", shopNo: "B1-47", tagId: "317452", activated: "2026-03-01", expires: "2027-03-01" },
-  { name: "Mrs Enechi Sandra", shopNo: "C0-08", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+  { name: "Mrs Enechi Sandra", shopNo: "C0-08", tagId: "317488", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Facetech Gadgets", shopNo: "D1-15", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Lawal Oriyomi", shopNo: "P/E-24", tagId: "317407", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Auwal Oghenekome", shopNo: "I0-10", tagId: "317410", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1353,7 +1389,7 @@ export const etags = [
   { name: "Ahmad Adamu", shopNo: "E0-41/42/44", tagId: "317434", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Azeez Olayinka", shopNo: "D1-67", tagId: "317435", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Favor Bosco", shopNo: "B0-62", tagId: "317442", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Mrs Gladdy Hammord", shopNo: "G-02", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Mrs Gladdy Hammord", shopNo: "G-02", tagId: "317482", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Joda Francis", shopNo: "B1-43&44", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mobility", shopNo: "J0-20", tagId: "317448", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1379,12 +1415,12 @@ export const etags = [
   { name: "Blessing Abdulwahab", shopNo: "B1-35", tagId: "317496", activated: "2026-04-02", expires: "2027-04-02" },
 
   { name: "Egbekunle Olugbenga", shopNo: "D0-53", tagId: "317450", activated: "2026-04-07", expires: "2027-04-07" },
-   { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "Not Issued", activated: "2026-04-09", expires: "2027-04-09" },
+   { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "317487", activated: "2026-04-09", expires: "2027-04-09" },
    { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
    { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
     { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
      { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Festus", shopNo: "D1-04", tagId: "Not Activated", activated: "2026-04-22", expires: "2027-04-22" }
+     { name: "Festus", shopNo: "D1-04", tagId: "Not Issued", activated: "2026-04-22", expires: "2027-04-22" }
 ];
 
 export function getMonthlyStats(yearMonth){
