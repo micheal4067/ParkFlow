@@ -365,7 +365,7 @@ function downloadPDF() {
     const endingBalance = runningBalance;
 
     // Box
-    doc.rect(14, y, 182, 68);
+    doc.rect(14, y, 182, 75);
 
     // Header
     doc.setFillColor(0,0,0);
@@ -408,6 +408,8 @@ function downloadPDF() {
     addLine("• Total Cash Generated:", totalCashGenerated, true);
     addLine("• Total Deposit Made:", totalDeposit);
 
+    addLine("• Total Expenses:", totalExpenses);
+
     // Ending Balance
     doc.setFont("helvetica","bold");
     doc.text("• Ending Balance:", 18, lineY);
@@ -442,7 +444,7 @@ function downloadPDF() {
     // =========================
     // SAVE
     // =========================
-    doc.save(`Sales-Report-${summary.month}-${summary.year}.pdf`);
+    doc.save(`New-Kuje-shopping_Complex-CarPark-Sales-Report-${summary.month}-${summary.year}.pdf`);
 }
 
 async function downloadWordDocx() {
@@ -571,6 +573,7 @@ async function downloadWordDocx() {
         ["Balance B/F", balanceBF],
         ["Cash Generated", totalCashGenerated],
         ["Deposits", totalDeposit],
+        ["Total Expenses", totalExpenses],
         ["Ending Balance", endingBalance]
     ].map(([label,value]) => new docx.TableRow({
         children:[
@@ -632,7 +635,7 @@ async function downloadWordDocx() {
     const blob = await docx.Packer.toBlob(doc);
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `Sales-Report-${summary.month}-${summary.year}.docx`;
+    a.download = `New-Kuje-shopping_Complex-CarPark-Sales-Report-${summary.month}-${summary.year}.docx`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
