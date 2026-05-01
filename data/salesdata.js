@@ -1326,13 +1326,13 @@ account:42500
     30:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:8700,
     etagCash:0,
     parkingBank:0,
-    etagBank:0,
+    etagBank:7500,
     expenses:0,
-    deposit:0,
-    account:0
+    deposit:8700,
+    account:8700
   }
 }
 
@@ -1420,7 +1420,8 @@ export const etags = [
    { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
     { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
      { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Festus", shopNo: "D1-04", tagId: "Not Issued", activated: "2026-04-22", expires: "2027-04-22" }
+     { name: "Festus", shopNo: "D1-04", tagId: "Not Issued", activated: "2026-04-22", expires: "2027-04-22" },
+      { name: "XP water", shopNo: "G-16", tagId: "317490", activated: "2026-04-30", expires: "2027-04-30" }
 ];
 
 export function getMonthlyStats(yearMonth){
