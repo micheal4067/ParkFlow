@@ -19,13 +19,13 @@
           email: "Not Available"
         },
         {
-          name: "Peter Jegede",
-          profile: "images/peter.jpg",
+          name: "Ibraheem Abdulqudus",
+          profile: "images/no-profile-picture.jpg",
           position: "Cashier",
           post: "Entrance 1 & 2",
-          startDate: "2026-02-02",
-          contact: "09162919032",
-          email: "ebenezerjegede09@hmail.com"
+          startDate: "2026-05-04",
+          contact: "09139938692",
+          email: "ibrahimabdulqudus60@gmail.com"
         },
         {
           name: "Elijah Pius",
