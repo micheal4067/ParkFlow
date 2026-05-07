@@ -1352,7 +1352,7 @@ account:42500
 
   2:{
     desc:"Sales",
-    tickets:0,
+    tickets:110,
     parkingCash:9600,
     etagCash:0,
     parkingBank:0,
@@ -1376,7 +1376,7 @@ account:42500
 
    4:{
     desc:"Sales",
-    tickets:0,
+    tickets:94,
     parkingCash:9000,
     etagCash:0,
     parkingBank:0,
@@ -1388,7 +1388,7 @@ account:42500
 
    5:{
     desc:"Sales",
-    tickets:0,
+    tickets:103,
     parkingCash:8300,
     etagCash:0,
     parkingBank:0,
@@ -1400,7 +1400,7 @@ account:42500
 
    6:{
     desc:"Sales",
-    tickets:0,
+    tickets:120,
     parkingCash:8000,
     etagCash:0,
     parkingBank:0,
