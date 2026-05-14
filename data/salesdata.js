@@ -1386,7 +1386,7 @@ account:42500
     account:9000
   },
 
-   5:{
+  5:{
     desc:"Sales",
     tickets:103,
     parkingCash:8300,
@@ -1398,7 +1398,7 @@ account:42500
     account:0
   },
 
-   6:{
+  6:{
     desc:"Sales",
     tickets:120,
     parkingCash:8000,
@@ -1410,7 +1410,7 @@ account:42500
     account:13700
   },
 
-   7:{
+  7:{
     desc:"Sales",
     tickets:0,
     parkingCash:7500,
@@ -1422,10 +1422,10 @@ account:42500
     account:0
   },
 
-   8:{
+  8:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:6500,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
@@ -1434,10 +1434,10 @@ account:42500
     account:0
   },
 
-   9:{
+  9:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:7200,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
@@ -1446,7 +1446,7 @@ account:42500
     account:0
   },
 
-   10:{
+  10:{
     desc:"OFF",
     tickets:0,
     parkingCash:0,
@@ -1458,6 +1458,53 @@ account:42500
     account:0
   },
 
+  11:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:8300,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  12:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:36600,
+    account:36600
+  },
+
+  13:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:7200,
+    account:7200
+  },
+
+  14:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  }
 
 }
 
@@ -1466,7 +1513,6 @@ account:42500
 export const etags = [
   { name: "Koda Zra John", shopNo: "B1-55", tagId: "317494", activated: "2026-02-01", expires: "2027-02-01" },
   { name: "Victoria Omolola Fadare", shopNo: "D1-01", tagId: "317403", activated: "2026-02-28", expires: "2027-02-28" },
-
 
   { name: "Zainab Muhammed", shopNo: "B0-41/42", tagId: "317439", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Adesola Halia", shopNo: "G-27", tagId: "317417", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1548,9 +1594,10 @@ export const etags = [
 
 
     { name: "Kidochukwu Samuel", shopNo: "G1-02", tagId: "317491", activated: "2026-05-01", expires: "2027-05-01" },
-    { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05" },
+    { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05"},
     { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "Not Issued", activated: "2026-05-05", expires: "2027-05-05" },
-    { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "Not Issued", activated: "2026-05-05", expires: "2027-05-05" }   
+    { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "Not Issued", activated: "2026-05-05", expires: "2027-05-05" },
+    { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" }    
 ];
 
 export function getMonthlyStats(yearMonth){
