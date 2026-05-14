@@ -105,13 +105,17 @@ function applyFilter() {
 /* =========================
    SEARCH + FILTER COMBINED
 ========================= */
+/* =========================
+   SEARCH + FILTER COMBINED
+========================= */
 document.getElementById("searchTag").addEventListener("input", e => {
 
     const query = e.target.value.toLowerCase();
 
     let filtered = etags.filter(etag =>
         etag.name.toLowerCase().includes(query) ||
-        etag.shopNo.toLowerCase().includes(query)
+        etag.shopNo.toLowerCase().includes(query) ||
+        etag.tagId.toLowerCase().includes(query)
     );
 
     const extraNames = getExtraTagNames(filtered);

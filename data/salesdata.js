@@ -1528,7 +1528,7 @@ export const etags = [
   { name: "Olaniyi Blessing", shopNo: "E0-39", tagId: "317405", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Ezeaba Ugochi", shopNo: "B1-47", tagId: "317452", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Mrs Enechi Sandra", shopNo: "C0-08", tagId: "317488", activated: "2026-03-01", expires: "2027-03-01" },
-  { name: "Facetech Gadgets", shopNo: "D1-15", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+  { name: "Facetech Gadgets", shopNo: "D1-15", tagId: "317492", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Lawal Oriyomi", shopNo: "P/E-24", tagId: "317407", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Auwal Oghenekome", shopNo: "I0-10", tagId: "317410", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Luftrax Ltd", shopNo: "B0-29", tagId: "317411", activated: "2026-03-01", expires: "2027-03-01" },
@@ -1561,12 +1561,12 @@ export const etags = [
   { name: "Azeez Olayinka", shopNo: "D1-67", tagId: "317435", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Favor Bosco", shopNo: "B0-62", tagId: "317442", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mrs Gladdy Hammord", shopNo: "G-02", tagId: "317482", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Joda Francis", shopNo: "B1-43&44", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Joda Francis", shopNo: "B1-43&44", tagId: "317474", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mobility", shopNo: "J0-20", tagId: "317448", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "Not Issued", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "317476", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "317475", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "317489", activated: "2026-03-14", expires: "2027-03-14" },
-   { name: "Chika Jegede", shopNo: "P/I-06", tagId: "Not Issued", activated: "2026-03-16", expires: "2027-03-16" },
+   { name: "Chika Jegede", shopNo: "P/I-06", tagId: "317473", activated: "2026-03-16", expires: "2027-03-16" },
    { name: "Binga Kyepari", shopNo: "E0-53", tagId: "317443", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Salimat Usman", shopNo: "E1-22", tagId: "317495", activated: "2026-03-17", expires: "2027-03-17" },
    { name: "Abdul Hassan B", shopNo: "B1-18", tagId: "317498", activated: "2026-03-17", expires: "2027-03-17" },
@@ -1589,14 +1589,14 @@ export const etags = [
    { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
     { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
      { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Festus", shopNo: "D1-04", tagId: "Not Issued", activated: "2026-04-22", expires: "2027-04-22" },
+     { name: "Festus", shopNo: "D1-04", tagId: "317472", activated: "2026-04-22", expires: "2027-04-22" },
       { name: "XP water", shopNo: "G-16", tagId: "317490", activated: "2026-04-30", expires: "2027-04-30" },
 
 
     { name: "Kidochukwu Samuel", shopNo: "G1-02", tagId: "317491", activated: "2026-05-01", expires: "2027-05-01" },
     { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05"},
-    { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "Not Issued", activated: "2026-05-05", expires: "2027-05-05" },
-    { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "Not Issued", activated: "2026-05-05", expires: "2027-05-05" },
+    { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "317478", activated: "2026-05-05", expires: "2027-05-05" },
+    { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "317471", activated: "2026-05-05", expires: "2027-05-05" },
     { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" }    
 ];
 
