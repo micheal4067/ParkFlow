@@ -1497,6 +1497,66 @@ account:42500
   14:{
     desc:"Sales",
     tickets:0,
+    parkingCash:6600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   15:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7900,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6800,
+    account:6800
+  },
+
+   16:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   17:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   18:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   19:{
+    desc:"Sales",
+    tickets:0,
     parkingCash:0,
     etagCash:0,
     parkingBank:0,
@@ -1597,7 +1657,8 @@ export const etags = [
     { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05"},
     { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "317478", activated: "2026-05-05", expires: "2027-05-05" },
     { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "317471", activated: "2026-05-05", expires: "2027-05-05" },
-    { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" }    
+    { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" },
+     { name: "Mary Bulus", shopNo: "E1-08", tagId: "317470", activated: "2026-05-18", expires: "2027-05-18" }    
 ];
 
 export function getMonthlyStats(yearMonth){
