@@ -1412,8 +1412,8 @@ account:42500
 
   7:{
     desc:"Sales",
-    tickets:0,
-    parkingCash:7500,
+    tickets:80,
+    parkingCash:7100,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
@@ -1424,7 +1424,7 @@ account:42500
 
   8:{
     desc:"Sales",
-    tickets:0,
+    tickets:72,
     parkingCash:6500,
     etagCash:0,
     parkingBank:0,
@@ -1436,7 +1436,7 @@ account:42500
 
   9:{
     desc:"Sales",
-    tickets:0,
+    tickets:80,
     parkingCash:7200,
     etagCash:0,
     parkingBank:0,
@@ -1460,7 +1460,7 @@ account:42500
 
   11:{
     desc:"Sales",
-    tickets:0,
+    tickets:95,
     parkingCash:8300,
     etagCash:0,
     parkingBank:0,
@@ -1472,7 +1472,7 @@ account:42500
 
   12:{
     desc:"Sales",
-    tickets:0,
+    tickets:70,
     parkingCash:7200,
     etagCash:0,
     parkingBank:0,
@@ -1484,7 +1484,7 @@ account:42500
 
   13:{
     desc:"Sales",
-    tickets:0,
+    tickets:60,
     parkingCash:6800,
     etagCash:0,
     parkingBank:0,
@@ -1496,7 +1496,7 @@ account:42500
 
   14:{
     desc:"Sales",
-    tickets:0,
+    tickets:70,
     parkingCash:6600,
     etagCash:0,
     parkingBank:0,
@@ -1508,7 +1508,7 @@ account:42500
 
    15:{
     desc:"Sales",
-    tickets:0,
+    tickets:70,
     parkingCash:7900,
     etagCash:0,
     parkingBank:0,
@@ -1520,7 +1520,7 @@ account:42500
 
    16:{
     desc:"Sales",
-    tickets:0,
+    tickets:80,
     parkingCash:7400,
     etagCash:0,
     parkingBank:0,
@@ -1544,8 +1544,8 @@ account:42500
 
    18:{
     desc:"Sales",
-    tickets:0,
-    parkingCash:0,
+    tickets: 90,
+    parkingCash:7200,
     etagCash:0,
     parkingBank:0,
     etagBank:7500,
@@ -1555,6 +1555,30 @@ account:42500
   },
 
    19:{
+    desc:"Sales",
+    tickets:85,
+    parkingCash:7500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:29100,
+    account:29100
+  },
+
+  20:{
+    desc:"Sales",
+    tickets:90,
+    parkingCash:8300,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:2500,
+    deposit:0,
+    account:0
+  },
+
+  21:{
     desc:"Sales",
     tickets:0,
     parkingCash:0,
@@ -1658,7 +1682,8 @@ export const etags = [
     { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "317478", activated: "2026-05-05", expires: "2027-05-05" },
     { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "317471", activated: "2026-05-05", expires: "2027-05-05" },
     { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" },
-     { name: "Mary Bulus", shopNo: "E1-08", tagId: "317470", activated: "2026-05-18", expires: "2027-05-18" }    
+     { name: "Mary Bulus", shopNo: "E1-08", tagId: "317470", activated: "2026-05-18", expires: "2027-05-18" },
+      { name: "Salihu Salamatu Abdul", shopNo: "E0-59/60", tagId: "317454", activated: "2026-05-20", expires: "2027-05-20" }     
 ];
 
 export function getMonthlyStats(yearMonth){
