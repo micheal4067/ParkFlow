@@ -1394,8 +1394,8 @@ account:42500
     parkingBank:0,
     etagBank:22500,
     expenses:2500,
-    deposit:0,
-    account:0
+    deposit:7500,
+    account:7500
   },
 
   6:{
