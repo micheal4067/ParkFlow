@@ -1624,6 +1624,90 @@ account:42500
     expenses:0,
     deposit:0,
     account:0
+  },
+
+  25:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:3000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  26:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:9700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  27:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:3400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  28:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  29:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5100,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  30:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   31:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
   }
 
 }
