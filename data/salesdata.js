@@ -1628,7 +1628,7 @@ account:42500
 
   25:{
     desc:"Sales",
-    tickets:0,
+    tickets:98,
     parkingCash:3000,
     etagCash:0,
     parkingBank:0,
@@ -1640,7 +1640,7 @@ account:42500
 
   26:{
     desc:"Sales",
-    tickets:0,
+    tickets:106,
     parkingCash:9700,
     etagCash:0,
     parkingBank:0,
@@ -1652,7 +1652,7 @@ account:42500
 
   27:{
     desc:"Sales",
-    tickets:0,
+    tickets:50,
     parkingCash:3400,
     etagCash:0,
     parkingBank:0,
@@ -1664,7 +1664,7 @@ account:42500
 
   28:{
     desc:"Sales",
-    tickets:0,
+    tickets:60,
     parkingCash:5500,
     etagCash:0,
     parkingBank:0,
@@ -1676,7 +1676,7 @@ account:42500
 
   29:{
     desc:"Sales",
-    tickets:0,
+    tickets:69,
     parkingCash:5100,
     etagCash:0,
     parkingBank:0,
@@ -1688,7 +1688,7 @@ account:42500
 
   30:{
     desc:"Sales",
-    tickets:0,
+    tickets:70,
     parkingCash:5600,
     etagCash:0,
     parkingBank:0,
