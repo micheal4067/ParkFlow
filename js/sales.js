@@ -12,6 +12,14 @@ function formatNumber(num) {
     });
 }
 
+function getBalanceAdjustment(month) {
+    const adjustments = {
+        "2026-06": -700 
+    };
+
+    return adjustments[month] || 0;
+}
+
 /* =========================
    GET PREVIOUS MONTH BALANCE
 ========================= */
@@ -20,6 +28,8 @@ function getPreviousMonthBalance(selectedMonth) {
     date.setMonth(date.getMonth() - 1);
     const prevMonthStr = date.toISOString().slice(0, 7);
     const prevData = SalesData[prevMonthStr];
+    let available;
+    let actualDeposit;
 
     if (!prevData) return 0;
 
@@ -36,12 +46,13 @@ function getPreviousMonthBalance(selectedMonth) {
         const deposit = d.deposit || 0;
         const expenses = d.expenses || 0;
 
-        const available = runningBalance + dailyCash;
-        const actualDeposit = Math.min(deposit, available);
+        available = runningBalance + dailyCash;
+        actualDeposit = Math.min(deposit, available);
 
-        runningBalance = available - expenses - actualDeposit;
+        runningBalance = available - actualDeposit- expenses;
+
     }
-
+   
     return runningBalance;
 }
 
@@ -58,7 +69,9 @@ function loadMonth() {
     const days = new Date(year, month + 1, 0).getDate();
     const monthData = SalesData[selected] || {};
 
-    let runningBalance = getPreviousMonthBalance(selected);
+    let runningBalance =
+    getPreviousMonthBalance(selected) +
+    getBalanceAdjustment(selected);
 
     let totalParkingCash = 0;
     let totalETagCash = 0;
@@ -228,7 +241,9 @@ function downloadPDF() {
 
     const date = new Date(selected + "-01");
     const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    let runningBalance = getPreviousMonthBalance(selected);
+    let runningBalance =
+    getPreviousMonthBalance(selected) +
+    getBalanceAdjustment(selected);
     const balanceBF = runningBalance;
 
     // =========================
@@ -455,7 +470,9 @@ async function downloadWordDocx() {
     const date = new Date(selected + "-01");
     const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-    let runningBalance = getPreviousMonthBalance(selected);
+   let runningBalance =
+    getPreviousMonthBalance(selected) +
+    getBalanceAdjustment(selected);
     const balanceBF = runningBalance;
 
     let totalParkingCash = 0, totalETagCash = 0, totalParkingBank = 0, totalETagBank = 0;

@@ -596,8 +596,6 @@ account:11900
 
 },
 
-
-
 "2026-03":{
 
 1:{
@@ -1710,6 +1708,46 @@ account:42500
     account:0
   }
 
+},
+
+"2026-06" :{
+
+  1:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:52700,
+    account:52700
+  },
+
+  2:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  3:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
 }
 
 };
@@ -1788,22 +1826,25 @@ export const etags = [
   { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "317493", activated: "2026-04-01", expires: "2027-04-01" },
   { name: "Blessing Abdulwahab", shopNo: "B1-35", tagId: "317496", activated: "2026-04-02", expires: "2027-04-02" },
   { name: "Egbekunle Olugbenga", shopNo: "D0-53", tagId: "317450", activated: "2026-04-07", expires: "2027-04-07" },
-   { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "317487", activated: "2026-04-09", expires: "2027-04-09" },
-   { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
-   { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
-    { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
-     { name: "Festus", shopNo: "D1-04", tagId: "317472", activated: "2026-04-22", expires: "2027-04-22" },
-      { name: "XP water", shopNo: "G-16", tagId: "317490", activated: "2026-04-30", expires: "2027-04-30" },
+  { name: "Yusuf Suleiman", shopNo: "B0-09", tagId: "317487", activated: "2026-04-09", expires: "2027-04-09" },
+  { name: "Mrs Joanna Phillip", shopNo: "H0-10", tagId: "317483", activated: "2026-04-14", expires: "2027-04-14" },
+  { name: "Huiara Usman", shopNo: "P/C-02", tagId: "317484", activated: "2026-04-16", expires: "2027-04-16" },
+  { name: "Mopelola Kolawole", shopNo: "B0-66", tagId: "317485", activated: "2026-04-17", expires: "2027-04-17" },
+  { name: "Nnabuike Juliet", shopNo: "E1-44/62", tagId: "317486", activated: "2026-04-17", expires: "2027-04-17" },
+  { name: "Festus", shopNo: "D1-04", tagId: "317472", activated: "2026-04-22", expires: "2027-04-22" },
+  { name: "XP water", shopNo: "G-16", tagId: "317490", activated: "2026-04-30", expires: "2027-04-30" },
 
 
-    { name: "Kidochukwu Samuel", shopNo: "G1-02", tagId: "317491", activated: "2026-05-01", expires: "2027-05-01" },
-    { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05"},
-    { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "317478", activated: "2026-05-05", expires: "2027-05-05" },
-    { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "317471", activated: "2026-05-05", expires: "2027-05-05" },
-    { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" },
-     { name: "Mary Bulus", shopNo: "E1-08", tagId: "317470", activated: "2026-05-18", expires: "2027-05-18" },
-      { name: "Salihu Salamatu Abdul", shopNo: "E0-59/60", tagId: "317454", activated: "2026-05-20", expires: "2027-05-20" }     
+  { name: "Kidochukwu Samuel", shopNo: "G1-02", tagId: "317491", activated: "2026-05-01", expires: "2027-05-01" },
+  { name: "Adenuga Adedapo", shopNo: "K1-07", tagId: "317480", activated: "2026-05-05", expires: "2027-05-05"},
+  { name: "Olatunji Saheed", shopNo: "K0-09/C0-16", tagId: "317478", activated: "2026-05-05", expires: "2027-05-05" },
+  { name: "Blessing Akiba", shopNo: "C1-48/49", tagId: "317471", activated: "2026-05-05", expires: "2027-05-05" },
+  { name: "Samuel Arokoyo", shopNo: "PL-11", tagId: "317477", activated: "2026-05-13", expires: "2027-05-13" },
+  { name: "Mary Bulus", shopNo: "E1-08", tagId: "317470", activated: "2026-05-18", expires: "2027-05-18" },
+  { name: "Salihu Salamatu Abdul", shopNo: "E0-59/60", tagId: "317454", activated: "2026-05-20", expires: "2027-05-20" },
+
+      
+  { name: "Fanyan Mfank Jenifer", shopNo: "B0-61", tagId: "317453", activated: "2026-06-02", expires: "2027-06-02" }
 ];
 
 export function getMonthlyStats(yearMonth){
