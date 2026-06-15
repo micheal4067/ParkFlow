@@ -1752,9 +1752,9 @@ account:42500
     desc:"Sales",
     tickets:0,
     parkingCash:8200,
-    etagCash:7500,
+    etagCash:0,
     parkingBank:0,
-    etagBank:0,
+    etagBank:7500,
     expenses:2500,
     deposit:0,
     account:0
