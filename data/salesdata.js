@@ -1763,7 +1763,7 @@ account:42500
    5:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:7500,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
@@ -1773,7 +1773,115 @@ account:42500
   },
 
    6:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7300,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  7:{
     desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  8:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:7800,
+    account:7800
+  },
+
+  9:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:8800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:15600,
+    account:15600
+  },
+
+  10:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6100,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6100,
+    account:6100
+  },
+
+11:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  12:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:8500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:14200,
+    account:14200
+  },
+
+   13:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7100,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   14:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   15:{
+    desc:"Sales",
     tickets:0,
     parkingCash:0,
     etagCash:0,
@@ -1841,7 +1949,7 @@ export const etags = [
    { name: "Mrs Gladdy Hammord", shopNo: "G-02", tagId: "317482", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Joda Francis", shopNo: "B1-43&44", tagId: "317474", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Mobility", shopNo: "J0-20", tagId: "317448", activated: "2026-03-01", expires: "2027-03-01" },
-   { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "317476", activated: "2026-03-01", expires: "2027-03-01" },
+   { name: "Charity Peter Basi", shopNo: "P/K-04", tagId: "317999", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Akinsipe Oyeleke Gbenga", shopNo: "G-45&46", tagId: "317475", activated: "2026-03-01", expires: "2027-03-01" },
    { name: "Lowis Furniture & Interior", shopNo: "B1-02", tagId: "317489", activated: "2026-03-14", expires: "2027-03-14" },
    { name: "Chika Jegede", shopNo: "P/I-06", tagId: "317473", activated: "2026-03-16", expires: "2027-03-16" },
@@ -1880,7 +1988,9 @@ export const etags = [
   { name: "Salihu Salamatu Abdul", shopNo: "E0-59/60", tagId: "317454", activated: "2026-05-20", expires: "2027-05-20" },
 
       
-  { name: "Fanyan Mfank Jenifer", shopNo: "B0-61", tagId: "317453", activated: "2026-06-02", expires: "2027-06-02" }
+  { name: "Fanyan Mfank Jenifer", shopNo: "B0-61", tagId: "317453", activated: "2026-06-02", expires: "2027-06-02" },
+  { name: "Kudiwave", shopNo: "B1-10", tagId: "317476", activated: "2026-06-08", expires: "2027-06-08" },
+  { name: "Mrs Benson Elizabeth", shopNo: "C4-27", tagId: "317459", activated: "2026-06-08", expires: "2027-06-08" }
 ];
 
 export function getMonthlyStats(yearMonth){
