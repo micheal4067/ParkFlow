@@ -2062,14 +2062,14 @@ account:42500
 
   30:{
     desc:"Sales",
-    tickets:0,
-    parkingCash:0,
+    tickets:96,
+    parkingCash:8200,
     etagCash:0,
     parkingBank:0,
     etagBank:7500,
-    expenses:0,
-    deposit:20000,
-    account:20000
+    expenses:100,
+    deposit:58000,
+    account:58000
   }
 
 }
