@@ -1832,7 +1832,7 @@ account:42500
     account:6100
   },
 
-11:{
+  11:{
     desc:"Sales",
     tickets:99,
     parkingCash:7400,
@@ -2072,6 +2072,107 @@ account:42500
     account:58000
   }
 
+},
+
+"2026-07" :{
+
+  1:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:9000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   2:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7800,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:2500,
+    deposit:29000,
+    account:29000
+  },
+
+   3:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6900,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   4:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:8600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   5:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   6:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:9200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+  
+   7:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:9600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:9600,
+    account:9600
+  },
+
+   8:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:0,
+    account:0
+  }
+
+
 }
 
 };
@@ -2174,7 +2275,10 @@ export const etags = [
   { name: "Agbawodikeizu Kenedy Obinna", shopNo: "K1-01 & 15", tagId: "317462", activated: "2026-06-30", expires: "2027-06-30" },
   { name: "Musa Muhammed", shopNo: "D0-45", tagId: "317463", activated: "2026-06-30", expires: "2027-06-30" },
   { name: "Marcollyns Enterprises", shopNo: "", tagId: "Not-Issued", activated: "2026-06-11", expires: "2027-06-11" },
-  { name: "Judith Solar", shopNo: "", tagId: "Not-Issued", activated: "2026-06-15", expires: "2027-06-15" }
+  { name: "Judith Solar", shopNo: "", tagId: "Not-Issued", activated: "2026-06-15", expires: "2027-06-15" },
+
+
+  { name: "Terracolfa Agro Ventures", shopNo: "G0-09", tagId: "317199", activated: "2026-07-08", expires: "2027-07-08" }
 ];
 
 export function getMonthlyStats(yearMonth){
