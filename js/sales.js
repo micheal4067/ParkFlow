@@ -14,7 +14,8 @@ function formatNumber(num) {
 
 function getBalanceAdjustment(month) {
     const adjustments = {
-        "2026-06": -700 
+        "2026-06": -700,
+         "2026-07": 15400 // example value
     };
 
     return adjustments[month] || 0;
@@ -470,7 +471,8 @@ async function downloadWordDocx() {
     const date = new Date(selected + "-01");
     const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-   let runningBalance =
+    //let runningBalance = getPreviousMonthBalance(selected);
+    let runningBalance =
     getPreviousMonthBalance(selected) +
     getBalanceAdjustment(selected);
     const balanceBF = runningBalance;
