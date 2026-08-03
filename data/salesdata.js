@@ -2155,24 +2155,343 @@ account:42500
     etagCash:0,
     parkingBank:0,
     etagBank:0,
-    expenses:0,
-    deposit:9600,
-    account:9600
+    expenses:100,
+    deposit:9500,
+    account:9500
   },
 
    8:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:7400,
     etagCash:0,
     parkingBank:0,
     etagBank:7500,
+    expenses:100,
+    deposit:7300,
+    account:7300
+  },
+
+    9:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
     expenses:0,
     deposit:0,
     account:0
+  },
+
+  10:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7300,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  11:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6000,
+    account:6000
+  },
+
+  12:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  13:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:8600,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:2500,
+    deposit:6100,
+    account:6100
+  },
+
+  14:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   15:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  16:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   17:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6000,
+    account:6000
+  },
+
+   18:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:5200,
+    account:5200
+  },
+
+   19:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:50000,
+    account:50000
+  },
+
+   20:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   21:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   22:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7100,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   23:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:24000,
+    account:24000
+  },
+
+   24:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6300,
+    account:6300
+  },
+
+   25:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6400,
+    account:6400
+  },
+
+   26:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+   27:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:4800,
+    account:4800
+  },
+
+  
+   28:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:7000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:2500,
+    deposit:0,
+    account:0
+  },
+
+  
+   29:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  
+   30:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6000,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  
+   31:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:52200,
+    account:52200
   }
 
+},
 
+"2026-08" :{
+  
+  1:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  2:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  3:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+  
 }
 
 };
@@ -2200,7 +2519,7 @@ export const etags = [
   { name: "Auwal Oghenekome", shopNo: "I0-10", tagId: "317410", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Luftrax Ltd", shopNo: "B0-29", tagId: "317411", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Sulit Technology", shopNo: "E0-33", tagId: "317412", activated: "2026-03-01", expires: "2027-03-01" },
-  { name: "Yohana Peter", shopNo: "B0-14", tagId: "317436", activated: "2026-03-01", expires: "2027-03-01" },
+  { name: "Yohana Peter", shopNo: "B0-14", tagId: "317242", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "James Utibe", shopNo: "E1-10/26", tagId: "317437", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Ndubisi Cosmas", shopNo: "BO-05", tagId: "317438", activated: "2026-03-01", expires: "2027-03-01" },
   { name: "Abiodun Adeosun", shopNo: "B1-32", tagId: "317440", activated: "2026-03-01", expires: "2027-03-01" },
@@ -2274,8 +2593,8 @@ export const etags = [
   { name: "Mrs Benson Elizabeth", shopNo: "C4-27", tagId: "317459", activated: "2026-06-08", expires: "2027-06-08" },
   { name: "Agbawodikeizu Kenedy Obinna", shopNo: "K1-01 & 15", tagId: "317462", activated: "2026-06-30", expires: "2027-06-30" },
   { name: "Musa Muhammed", shopNo: "D0-45", tagId: "317463", activated: "2026-06-30", expires: "2027-06-30" },
-  { name: "Marcollyns Enterprises", shopNo: "", tagId: "Not-Issued", activated: "2026-06-11", expires: "2027-06-11" },
-  { name: "Judith Solar", shopNo: "", tagId: "Not-Issued", activated: "2026-06-15", expires: "2027-06-15" },
+  { name: "Marcollyns Enterprises", shopNo: "", tagId: "Not Issued", activated: "2026-06-11", expires: "2027-06-11" },
+  { name: "Judith Solar", shopNo: "", tagId: "Not Issued", activated: "2026-06-15", expires: "2027-06-15" },
 
 
   { name: "Terracolfa Agro Ventures", shopNo: "G0-09", tagId: "317199", activated: "2026-07-08", expires: "2027-07-08" }
