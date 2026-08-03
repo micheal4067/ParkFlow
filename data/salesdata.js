@@ -2448,8 +2448,8 @@ account:42500
     parkingBank:0,
     etagBank:0,
     expenses:0,
-    deposit:52200,
-    account:52200
+    deposit:85600,
+    account:85600
   }
 
 },
