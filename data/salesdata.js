@@ -2457,6 +2457,18 @@ account:42500
 "2026-08" :{
   
   1:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  2:{
     desc:"OFF",
     tickets:0,
     parkingCash:0,
@@ -2468,7 +2480,7 @@ account:42500
     account:0
   },
 
-  2:{
+  3:{
     desc:"Sales",
     tickets:0,
     parkingCash:7100,
@@ -2480,7 +2492,7 @@ account:42500
     account:0
   },
 
-  3:{
+    4:{
     desc:"Sales",
     tickets:0,
     parkingCash:7400,
