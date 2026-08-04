@@ -2471,7 +2471,7 @@ account:42500
   2:{
     desc:"OFF",
     tickets:0,
-    parkingCash:0,
+    parkingCash:7100,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
@@ -2483,7 +2483,7 @@ account:42500
   3:{
     desc:"Sales",
     tickets:0,
-    parkingCash:0,
+    parkingCash:7400,
     etagCash:0,
     parkingBank:0,
     etagBank:0,
