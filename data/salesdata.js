@@ -2503,6 +2503,18 @@ account:42500
     deposit:0,
     account:0
   },
+
+    5:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6400,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
   
 }
 
