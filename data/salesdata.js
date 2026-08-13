@@ -2533,6 +2533,30 @@ account:42500
     7:{
     desc:"Sales",
     tickets:0,
+    parkingCash:5700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:2500,
+    deposit:0,
+    account:0
+  },
+
+     8:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6700,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6600,
+    account:6600
+  },
+
+     9:{
+    desc:"OFF",
+    tickets:0,
     parkingCash:0,
     etagCash:0,
     parkingBank:0,
@@ -2540,7 +2564,45 @@ account:42500
     expenses:0,
     deposit:0,
     account:0
-  }
+  },
+
+     10:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6400,
+    etagCash:15000,
+    parkingBank:0,
+    etagBank:7500,
+    expenses:0,
+    deposit:9500,
+    account:9500
+  },
+
+  11:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:6200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:21100,
+    account:21100
+  },
+
+ 12:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:5500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  
   
 }
 
@@ -2647,7 +2709,12 @@ export const etags = [
   { name: "Judith Solar", shopNo: "", tagId: "Not Issued", activated: "2026-06-15", expires: "2027-06-15" },
 
 
-  { name: "Terracolfa Agro Ventures", shopNo: "G0-09", tagId: "317199", activated: "2026-07-08", expires: "2027-07-08" }
+  { name: "Terracolfa Agro Ventures", shopNo: "G0-09", tagId: "317199", activated: "2026-07-08", expires: "2027-07-08" },
+
+
+  { name: "Mrs Edinna", shopNo: "G0-04", tagId: "317468", activated: "2026-08-10", expires: "2027-08-10" },
+  { name: "Suleiman Abdulwahab", shopNo: "J1-10", tagId: "317467", activated: "2026-08-10", expires: "2027-08-10" },
+  { name: "Fabrics Bytana", shopNo: "D0-37", tagId: "317466", activated: "2026-08-10", expires: "2027-08-10" }
 ];
 
 export function getMonthlyStats(yearMonth){
