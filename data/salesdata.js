@@ -2519,9 +2519,9 @@ account:42500
   
     6:{
     desc:"Sales",
-    tickets:0,
+    tickets:80,
     parkingCash:6600,
-    etagCash:80,
+    etagCash:0,
     parkingBank:0,
     etagBank:0,
     expenses:0,
