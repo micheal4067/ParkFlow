@@ -2602,7 +2602,65 @@ account:42500
     account:0
   },
 
-  
+  13:{
+    desc:"Sales",
+    tickets:85,
+    parkingCash:5500,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:5600,
+    account:0
+  },
+
+  14:{
+    desc:"Sales",
+    tickets:105,
+    parkingCash:7200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:7100,
+    account:0
+  },
+
+  15:{
+    desc:"Sales",
+    tickets:99,
+    parkingCash:6200,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:6100,
+    account:0
+  },
+
+  16:{
+    desc:"OFF",
+    tickets:0,
+    parkingCash:0,
+    etagCash:0,
+    parkingBank:0,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  },
+
+  17:{
+    desc:"Sales",
+    tickets:0,
+    parkingCash:0,
+    etagCash:7500,
+    parkingBank:300,
+    etagBank:0,
+    expenses:0,
+    deposit:0,
+    account:0
+  }
   
 }
 
@@ -2714,7 +2772,8 @@ export const etags = [
 
   { name: "Mrs Edinna", shopNo: "G0-04", tagId: "317468", activated: "2026-08-10", expires: "2027-08-10" },
   { name: "Suleiman Abdulwahab", shopNo: "J1-10", tagId: "317467", activated: "2026-08-10", expires: "2027-08-10" },
-  { name: "Fabrics Bytana", shopNo: "D0-37", tagId: "317466", activated: "2026-08-10", expires: "2027-08-10" }
+  { name: "Fabrics Bytana", shopNo: "D0-37", tagId: "317466", activated: "2026-08-10", expires: "2027-08-10" },
+  { name: "Magdalin Akila", shopNo: "E1-64", tagId: "317469", activated: "2026-08-17", expires: "2027-08-17" }
 ];
 
 export function getMonthlyStats(yearMonth){
